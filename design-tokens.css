@@ -1,0 +1,300 @@
+/* ==========================================================================
+   Humain Demand — Design Tokens
+   3-Layer System: Primitive > Semantic > Component
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   LAYER 1: PRIMITIVES
+   Raw values — never reference these directly in components.
+   -------------------------------------------------------------------------- */
+
+:root {
+
+  /* --- Color: Brand Green --- */
+  --green-50:  #00ffc4;   /* brightest highlight */
+  --green-100: #00e6b0;   /* medium bright */
+  --green-200: #00b389;   /* primary accent (consolidated from 226 uses) */
+  --green-300: #008066;   /* dark teal (merged #059669, #009973, #0a5c4a) */
+
+  /* --- Color: Neutral / Dark Backgrounds --- */
+  --neutral-950: #0a0a0a; /* near-black (body fallback, scrollbar) */
+  --neutral-900: #121418; /* main background */
+  --neutral-800: #16191d; /* card / surface (merged #151a1d, #1a1d21) */
+
+  /* --- Color: Text --- */
+  --white:       #ffffff;
+  --neutral-200: #e5e5e5; /* Tailwind neutral-200 */
+  --neutral-300: #d4d4d4; /* Tailwind neutral-300 */
+  --neutral-400: #a3a3a3; /* Tailwind neutral-400 */
+
+  /* --- Color: Utility --- */
+  --black:       #000000;
+  --transparent: transparent;
+
+  /* --- Typography: Font Families --- */
+  --font-display: 'Playfair Display', serif;
+  --font-body:    'Inter', sans-serif;
+
+  /* --- Typography: Font Sizes --- */
+  --text-4xl: 2.25rem;   /* 36px — section headings (mobile) */
+  --text-6xl: 3.75rem;   /* 60px — section headings (desktop) */
+  --text-2xl: 1.5rem;    /* 24px */
+  --text-xl:  1.25rem;   /* 20px */
+  --text-lg:  1.125rem;  /* 18px — body default */
+  --text-base: 1rem;     /* 16px */
+  --text-sm:  0.875rem;  /* 14px — body secondary */
+  --text-xs:  0.75rem;   /* 12px — labels */
+  --text-xxs: 0.625rem;  /* 10px — micro labels (text-[10px]) */
+
+  /* --- Typography: Font Weights --- */
+  --font-light:     300;
+  --font-regular:   400;
+  --font-medium:    500;
+  --font-semibold:  600;
+  --font-bold:      700;
+  --font-black:     900;
+
+  /* --- Typography: Line Heights --- */
+  --leading-tight:   1.1;   /* headings */
+  --leading-snug:    1.3;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.625; /* body */
+
+  /* --- Spacing Scale --- */
+  --space-0:  0;
+  --space-1:  0.25rem;  /* 4px */
+  --space-2:  0.5rem;   /* 8px */
+  --space-3:  0.75rem;  /* 12px — most common gap */
+  --space-4:  1rem;     /* 16px */
+  --space-6:  1.5rem;   /* 24px */
+  --space-8:  2rem;     /* 32px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px — compact section padding */
+  --space-24: 6rem;     /* 96px — standard section padding */
+  --space-32: 8rem;     /* 128px — hero section padding */
+
+  /* --- Border Radius --- */
+  --radius-lg:   0.5rem;    /* 8px — buttons, small elements */
+  --radius-xl:   0.75rem;   /* 12px — inner cards */
+  --radius-2xl:  1rem;      /* 16px — cards */
+  --radius-3xl:  2.5rem;    /* 40px — large cards, phases */
+  --radius-full: 9999px;    /* pills, avatars */
+
+  /* --- Shadows --- */
+  --shadow-sm:  0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md:  0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg:  0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+  /* --- Brand Glow Shadows --- */
+  --glow-sm:  0 0 10px rgba(0, 179, 137, 0.15);
+  --glow-md:  0 0 20px rgba(0, 179, 137, 0.2);
+  --glow-lg:  0 0 30px rgba(0, 179, 137, 0.3);
+  --glow-xl:  0 0 40px rgba(0, 179, 137, 0.4);
+
+  /* --- Z-Index Scale --- */
+  --z-base:      0;
+  --z-content:   10;
+  --z-sticky:    20;
+  --z-sticky-hi: 35;
+  --z-nav:       40;
+  --z-modal:     100;
+  --z-skip:      200;
+
+  /* --- Container --- */
+  --container-max: 72rem; /* 1152px — max-w-6xl */
+
+
+  /* ========================================================================
+     LAYER 2: SEMANTIC TOKENS
+     Purpose-based aliases — use these in layouts and utilities.
+     ======================================================================== */
+
+  /* --- Color: Surfaces --- */
+  --color-bg:         var(--neutral-950);
+  --color-surface-1:  var(--neutral-900);  /* main background */
+  --color-surface-2:  var(--neutral-800);  /* cards, panels */
+  --color-surface-hover: var(--neutral-800); /* hover states on surfaces */
+
+  /* --- Color: Brand / Accent --- */
+  --color-primary:       var(--green-200);  /* #00b389 — main accent */
+  --color-primary-light: var(--green-100);  /* lighter for gradients */
+  --color-primary-bright: var(--green-50);  /* brightest for highlights */
+  --color-primary-dark:  var(--green-300);  /* dark teal */
+
+  /* --- Color: Text --- */
+  --text-primary:   var(--white);        /* headings, high-emphasis */
+  --text-secondary: var(--neutral-200);  /* body text */
+  --text-tertiary:  var(--neutral-300);  /* secondary body */
+  --text-muted:     var(--neutral-400);  /* captions, labels, muted */
+  --text-accent:    var(--green-200);    /* accent-colored text */
+
+  /* --- Color: Border --- */
+  --border-default:  rgba(255, 255, 255, 0.06);
+  --border-subtle:   rgba(255, 255, 255, 0.03);
+  --border-accent:   var(--green-200);
+
+  /* --- Color: Gradient Endpoints --- */
+  --gradient-cta-from: var(--green-50);   /* #00ffc4 */
+  --gradient-cta-to:   var(--green-100);  /* #00e6b0 */
+  --gradient-bg-from:  var(--neutral-950);
+  --gradient-bg-to:    var(--neutral-900);
+
+  /* --- Typography: Semantic --- */
+  --font-heading:     var(--font-display);
+  --font-text:        var(--font-body);
+
+  --heading-size-lg:  var(--text-4xl);  /* mobile section heading */
+  --heading-size-xl:  var(--text-6xl);  /* desktop section heading */
+  --body-size:        var(--text-lg);
+  --body-size-sm:     var(--text-sm);
+  --label-size:       var(--text-xs);
+  --label-size-sm:    var(--text-xxs);
+
+  --heading-weight:   var(--font-bold);
+  --body-weight:      var(--font-regular);
+
+  --heading-leading:  var(--leading-tight);
+  --body-leading:     var(--leading-relaxed);
+
+  /* --- Spacing: Semantic --- */
+  --section-py-compact:  var(--space-16);
+  --section-py-standard: var(--space-24);
+  --section-py-hero:     var(--space-32);
+  --content-px:          var(--space-6);
+  --gap-tight:           var(--space-3);
+  --gap-default:         var(--space-4);
+  --gap-loose:           var(--space-6);
+  --gap-wide:            var(--space-8);
+
+  /* --- Radius: Semantic --- */
+  --radius-button:  var(--radius-lg);
+  --radius-card:    var(--radius-2xl);
+  --radius-card-lg: var(--radius-3xl);
+  --radius-card-inner: var(--radius-xl);
+  --radius-pill:    var(--radius-full);
+
+  /* --- Shadow: Semantic --- */
+  --shadow-card:    var(--shadow-lg);
+  --shadow-elevated: var(--shadow-2xl);
+  --shadow-glow:    var(--glow-md);
+
+
+  /* ========================================================================
+     LAYER 3: COMPONENT TOKENS
+     Scoped to specific UI patterns.
+     ======================================================================== */
+
+  /* --- Button --- */
+  --btn-font:          var(--font-text);
+  --btn-font-size:     var(--text-sm);
+  --btn-font-weight:   var(--font-semibold);
+  --btn-radius:        var(--radius-button);
+  --btn-px:            var(--space-6);
+  --btn-py:            var(--space-3);
+
+  --btn-primary-bg:    var(--color-primary);
+  --btn-primary-text:  var(--black);
+  --btn-primary-hover-bg: var(--color-primary-light);
+  --btn-primary-shadow: var(--glow-md);
+
+  --btn-ghost-bg:      var(--transparent);
+  --btn-ghost-text:    var(--text-primary);
+  --btn-ghost-border:  var(--border-default);
+  --btn-ghost-hover-bg: var(--color-surface-2);
+
+  --btn-pill-radius:   var(--radius-pill);
+
+  /* --- Card --- */
+  --card-bg:           var(--color-surface-2);
+  --card-bg-hover:     var(--color-surface-hover);
+  --card-radius:       var(--radius-card);
+  --card-radius-lg:    var(--radius-card-lg);
+  --card-radius-inner: var(--radius-card-inner);
+  --card-padding:      var(--space-8);
+  --card-padding-lg:   var(--space-12);
+  --card-border:       1px solid var(--border-default);
+  --card-shadow:       var(--shadow-card);
+
+  /* --- Navigation --- */
+  --nav-bg:            var(--color-surface-1);
+  --nav-text:          var(--text-primary);
+  --nav-text-muted:    var(--text-muted);
+  --nav-text-active:   var(--text-accent);
+  --nav-height:        4rem;
+  --nav-z:             var(--z-nav);
+
+  /* --- Modal / Overlay --- */
+  --modal-bg:          var(--color-surface-2);
+  --modal-radius:      var(--radius-card);
+  --modal-shadow:      var(--shadow-elevated);
+  --modal-z:           var(--z-modal);
+  --modal-overlay:     rgba(0, 0, 0, 0.6);
+
+  /* --- FAQ / Accordion --- */
+  --faq-bg:            var(--color-surface-2);
+  --faq-border:        var(--border-default);
+  --faq-radius:        var(--radius-card);
+  --faq-padding:       var(--space-6);
+  --faq-title-color:   var(--text-primary);
+  --faq-body-color:    var(--text-muted);
+  --faq-icon-color:    var(--color-primary);
+
+  /* --- CTA Section --- */
+  --cta-gradient:      linear-gradient(135deg, var(--gradient-cta-from), var(--gradient-cta-to));
+  --cta-text:          var(--black);
+  --cta-radius:        var(--radius-card);
+  --cta-glow:          var(--glow-lg);
+
+  /* --- Section --- */
+  --section-bg:        var(--color-surface-1);
+  --section-padding-y: var(--section-py-standard);
+  --section-padding-x: var(--content-px);
+}
+
+
+/* ==========================================================================
+   LIGHT THEME OVERRIDES
+   Future-proofing: swap semantic tokens only; primitives stay the same.
+   ========================================================================== */
+
+[data-theme="light"] {
+
+  /* --- Surfaces --- */
+  --color-bg:            #f8f9fa;
+  --color-surface-1:     #ffffff;
+  --color-surface-2:     #f1f3f5;
+  --color-surface-hover: #e9ecef;
+
+  /* --- Brand — slightly deeper greens for light bg contrast --- */
+  --color-primary:        #00996b;
+  --color-primary-light:  #00b389;
+  --color-primary-bright: #00e6b0;
+  --color-primary-dark:   #006644;
+
+  /* --- Text --- */
+  --text-primary:   #111827;
+  --text-secondary: #374151;
+  --text-tertiary:  #6b7280;
+  --text-muted:     #9ca3af;
+  --text-accent:    #00996b;
+
+  /* --- Borders --- */
+  --border-default:  rgba(0, 0, 0, 0.08);
+  --border-subtle:   rgba(0, 0, 0, 0.04);
+
+  /* --- Gradient Endpoints --- */
+  --gradient-bg-from: #ffffff;
+  --gradient-bg-to:   #f1f3f5;
+
+  /* --- Shadows (softer for light) --- */
+  --shadow-card:     0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-elevated: 0 10px 25px rgba(0, 0, 0, 0.08);
+  --shadow-glow:     0 0 20px rgba(0, 153, 107, 0.12);
+
+  /* --- Component overrides --- */
+  --btn-primary-text:  var(--white);
+  --cta-text:          var(--white);
+  --modal-overlay:     rgba(0, 0, 0, 0.3);
+  --nav-bg:            rgba(255, 255, 255, 0.9);
+}
