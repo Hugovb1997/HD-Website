@@ -1807,79 +1807,16 @@ animation: pulse-slow 6s ease-in-out infinite;
     <!-- Booking Modal -->
     <div id="booking-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Book a discovery call">
       <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="toggleModal(false)"></div>
-      <div class="relative bg-neutral-900 rounded-2xl shadow-2xl border border-white/10 w-full max-w-4xl h-[600px] overflow-hidden flex flex-col md:flex-row">
+      <div class="relative bg-neutral-900 rounded-2xl shadow-2xl border border-white/10 w-full max-w-[900px] h-[700px] overflow-hidden">
         <button onclick="toggleModal(false)" aria-label="Close booking modal" class="absolute top-4 right-4 z-10 bg-black/50 hover:bg-neutral-800 p-2 rounded-full text-neutral-400 transition-colors focus-visible:ring-2 focus-visible:ring-[#00b389] focus-visible:outline-none">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
-        <div class="md:w-1/3 bg-black/40 p-8 border-r border-white/5 flex flex-col">
-          <div class="w-12 h-12 rounded-full bg-neutral-800 mb-4 overflow-hidden border border-white/10">
-            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=200&amp;q=80" alt="David Chen" class="w-full h-full object-cover">
-          </div>
-          <h3 class="text-neutral-400 font-medium text-sm uppercase tracking-wide mb-1">David Chen</h3>
-          <h2 class="text-xl font-bold text-white mb-6">Discovery Call</h2>
-          <div class="space-y-4 text-neutral-400 text-sm">
-            <div class="flex items-start gap-3"><i data-lucide="clock" class="w-5 h-5 text-neutral-400"></i> <span>30 min</span></div>
-            <div class="flex items-start gap-3"><i data-lucide="video" class="w-5 h-5 text-neutral-400"></i> <span>Web conferencing details provided upon confirmation.</span></div>
-            <p class="text-neutral-400 leading-relaxed mt-4 text-xs">Book a session to see how we would engineer an unstoppable pipeline for you - without changing your workflow.</p>
-          </div>
-        </div>
-        <div class="md:w-2/3 p-8 bg-neutral-900 overflow-y-auto relative">
-          <!-- Success State Overlay -->
-          <div id="booking-success" class="absolute inset-0 bg-neutral-900 z-20 flex flex-col items-center justify-center text-center p-8 hidden">
-            <div class="w-16 h-16 bg-[#00b389]/10 rounded-full flex items-center justify-center mb-6"><i data-lucide="check" class="w-8 h-8 text-[#00b389]"></i></div>
-            <h3 class="text-2xl font-bold text-white mb-2">You're Booked!</h3>
-            <p class="text-neutral-400 mb-8 max-w-xs">A calendar invitation has been sent to your email address.</p>
-            <button onclick="toggleModal(false)" class="bg-[#008066] hover:bg-[#059669] text-white px-6 py-2 rounded-lg transition-colors">Close</button>
-          </div>
-
-          <div id="booking-form">
-            <h3 class="font-semibold text-lg mb-6 text-white">Select a Date &amp; Time</h3>
-            <div class="mb-8">
-              <div class="flex justify-between items-center mb-4">
-                <span class="font-medium text-white">October 2024</span>
-                <div class="flex gap-2">
-                  <button aria-label="Previous month" class="p-2 hover:bg-white/5 rounded text-neutral-400 focus-visible:ring-2 focus-visible:ring-[#00b389] focus-visible:outline-none"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
-                  <button aria-label="Next month" class="p-2 hover:bg-white/5 rounded text-neutral-400 focus-visible:ring-2 focus-visible:ring-[#00b389] focus-visible:outline-none"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
-                </div>
-              </div>
-              <div class="grid grid-cols-7 gap-2 text-center text-sm">
-                <div class="text-neutral-400 text-xs py-2">MON</div>
-                <div class="text-neutral-400 text-xs py-2">TUE</div>
-                <div class="text-neutral-400 text-xs py-2">WED</div>
-                <div class="text-neutral-400 text-xs py-2">THU</div>
-                <div class="text-neutral-400 text-xs py-2">FRI</div>
-                <div class="text-neutral-400 text-xs py-2">SAT</div>
-                <div class="text-neutral-400 text-xs py-2">SUN</div>
-                <span class="p-2 text-neutral-500">29</span>
-                <span class="p-2 text-neutral-500">30</span>
-                <button class="p-2 text-neutral-300 hover:bg-[#00b389]/10 hover:text-[#00b389] rounded-full transition-colors">1</button>
-                <button class="p-2 text-neutral-300 hover:bg-[#00b389]/10 hover:text-[#00b389] rounded-full transition-colors">2</button>
-                <button class="p-2 text-neutral-300 hover:bg-[#00b389]/10 hover:text-[#00b389] rounded-full transition-colors">3</button>
-                <span class="p-2 text-neutral-500">4</span>
-                <span class="p-2 text-neutral-500">5</span>
-                <button class="p-2 text-neutral-300 hover:bg-[#00b389]/10 hover:text-[#00b389] rounded-full transition-colors">6</button>
-                <button class="p-2 text-neutral-300 hover:bg-[#00b389]/10 hover:text-[#00b389] rounded-full transition-colors">7</button>
-                <button class="p-2 bg-[#008066] text-white rounded-full font-semibold shadow-md">8</button>
-                <button class="p-2 text-neutral-300 hover:bg-[#00b389]/10 hover:text-[#00b389] rounded-full transition-colors">9</button>
-                <button class="p-2 text-neutral-300 hover:bg-[#00b389]/10 hover:text-[#00b389] rounded-full transition-colors">10</button>
-                <span class="p-2 text-neutral-500">11</span>
-                <span class="p-2 text-neutral-500">12</span>
-              </div>
-            </div>
-            <div class="text-sm font-medium text-white mb-3">Tuesday, Oct 8</div>
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              <button onclick="confirmBooking()" class="border border-[#00b389] text-[#00b389] py-2 rounded hover:bg-[#00b389]/10 font-medium transition-colors">9:00am</button>
-              <button onclick="confirmBooking()" class="border border-white/10 text-neutral-300 py-2 rounded hover:border-[#00b389] hover:text-[#00b389] transition-colors">9:30am</button>
-              <button onclick="confirmBooking()" class="border border-white/10 text-neutral-300 py-2 rounded hover:border-[#00b389] hover:text-[#00b389] transition-colors">10:00am</button>
-              <button onclick="confirmBooking()" class="border border-white/10 text-neutral-300 py-2 rounded hover:border-[#00b389] hover:text-[#00b389] transition-colors">11:15am</button>
-              <button onclick="confirmBooking()" class="border border-white/10 text-neutral-300 py-2 rounded hover:border-[#00b389] hover:text-[#00b389] transition-colors">1:00pm</button>
-              <button onclick="confirmBooking()" class="border border-white/10 text-neutral-300 py-2 rounded hover:border-[#00b389] hover:text-[#00b389] transition-colors">3:30pm</button>
-            </div>
-            <div class="mt-8 pt-6 text-center">
-              <p class="text-xs text-neutral-400">Times are shown in your local timezone (EST).</p>
-            </div>
-          </div>
-        </div>
+        <iframe
+          src="https://calendly.com/hugo-yg8/growth-call?hide_gdpr_banner=1&background_color=171717&text_color=e5e5e5&primary_color=00b389"
+          class="w-full h-full border-0"
+          title="Schedule a Growth Call"
+          loading="lazy">
+        </iframe>
       </div>
     </div>
 
@@ -1910,15 +1847,10 @@ animation: pulse-slow 6s ease-in-out infinite;
       // Modal Logic
       function toggleModal(show) {
         const modal = document.getElementById('booking-modal');
-        const form = document.getElementById('booking-form');
-        const success = document.getElementById('booking-success');
 
         if (show) {
           modal.classList.remove('hidden');
           document.body.style.overflow = 'hidden';
-          form.style.display = 'block';
-          success.classList.add('hidden');
-          // Focus the close button for keyboard users
           const closeBtn = modal.querySelector('button[aria-label="Close booking modal"]');
           if (closeBtn) setTimeout(() => closeBtn.focus(), 100);
         } else {
@@ -1960,22 +1892,7 @@ animation: pulse-slow 6s ease-in-out infinite;
         btn.setAttribute('aria-expanded', 'false');
       });
 
-      // Booking Simulation
-      function confirmBooking() {
-        const form = document.getElementById('booking-form');
-        const success = document.getElementById('booking-success');
-
-        form.style.opacity = '0';
-        setTimeout(() => {
-          form.style.display = 'none';
-          success.classList.remove('hidden');
-          success.style.opacity = '0';
-          setTimeout(() => {
-            success.style.opacity = '1';
-            form.style.opacity = '1';
-          }, 50);
-        }, 300);
-      }
+      // Calendly handles booking — no local simulation needed
 
       // Smooth Scroll for Anchors with history support
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
