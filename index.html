@@ -903,53 +903,55 @@ animation: pulse-slow 6s ease-in-out infinite;
           </h2>
         </div>
 
-      <!-- Tabs -->
-      <div id="tabs-container" class="flex items-center justify-center gap-4 mb-12">
-        <!-- Tabs will be injected here by JS -->
-      </div>
-
-      <!-- Main Content -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-        <!-- Left: Proof Image -->
-        <div class="bg-[#1a1d22] rounded-3xl border border-[#2a2a2a] overflow-hidden relative min-h-[400px] lg:min-h-[480px]">
-          <img id="visual-img" src="Proof Elements website/12.png" class="absolute inset-0 w-full h-full object-cover rounded-3xl">
+      <div class="bg-[#1e2227]/60 backdrop-blur-sm border border-[#2a2a2a] rounded-[2.5rem] p-6 md:p-10 relative overflow-hidden shadow-lg">
+        <!-- Tabs -->
+        <div id="tabs-container" class="flex items-center justify-center gap-4 mb-8">
+          <!-- Tabs will be injected here by JS -->
         </div>
 
-        <!-- Right: Info -->
-        <div class="flex flex-col justify-center">
-          <div class="flex items-center gap-3 mb-6">
-            <h3 id="study-title" class="text-3xl md:text-4xl font-bold text-white tracking-tight">National Positions</h3>
-            <span id="study-tag" class="text-[10px] font-bold text-[#00b389] border border-[#00b389]/30 px-3 py-1 rounded-full uppercase tracking-widest bg-[#00b389]/5 whitespace-nowrap">Agency</span>
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          <!-- Left: Proof Image -->
+          <div class="bg-[#1a1d22] rounded-2xl border border-[#2a2a2a] overflow-hidden relative min-h-[400px] lg:min-h-[460px]">
+            <img id="visual-img" src="Proof Elements website/np-combined.png" class="absolute inset-0 w-full h-full object-cover rounded-2xl">
           </div>
 
-          <!-- Hero Metric -->
-          <div class="mb-8">
-            <h2 id="hero-metric" class="text-6xl md:text-7xl font-black leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-orange-500 to-orange-700 mb-2">$350K</h2>
-            <h4 id="hero-label" class="text-xl font-bold text-white/80">ARR Added in 7.5 Months</h4>
-          </div>
-
-          <p id="hero-desc" class="text-neutral-400 leading-relaxed mb-8">
-            How we built a repeatable revenue engine for National Positions
-          </p>
-
-          <div class="grid grid-cols-2 gap-6 mb-8">
-            <div>
-              <h4 class="text-white font-bold text-sm mb-2">Before</h4>
-              <p id="study-challenge" class="text-neutral-400 text-sm leading-relaxed">
-                Time-consuming cold email campaigns yielding poor results despite years of experience.
-              </p>
+          <!-- Right: Info -->
+          <div class="flex flex-col justify-center">
+            <div class="flex items-center gap-3 mb-6">
+              <h3 id="study-title" class="text-3xl md:text-4xl font-bold text-white tracking-tight">National Positions</h3>
+              <span id="study-tag" class="text-[10px] font-bold text-[#00b389] border border-[#00b389]/30 px-3 py-1 rounded-full uppercase tracking-widest bg-[#00b389]/5 whitespace-nowrap">Agency</span>
             </div>
-            <div>
-              <h4 class="text-white font-bold text-sm mb-2">After</h4>
-              <p id="study-solution" class="text-neutral-400 text-sm leading-relaxed">
-                $350k ARR added in just 7.5 months through precision outbound that consistently fills the pipeline.
-              </p>
-            </div>
-          </div>
 
-          <!-- Metrics -->
-          <div id="metrics-container" class="grid grid-cols-3 gap-4">
-            <!-- Metrics will be injected here by JS -->
+            <!-- Hero Metric -->
+            <div class="mb-8">
+              <h2 id="hero-metric" class="text-6xl md:text-7xl font-black leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-orange-500 to-orange-700 mb-2">$350K</h2>
+              <h4 id="hero-label" class="text-xl font-bold text-white/80">ARR Added in 7.5 Months</h4>
+            </div>
+
+            <p id="hero-desc" class="text-neutral-400 leading-relaxed mb-8">
+              How we built a repeatable revenue engine for National Positions
+            </p>
+
+            <div class="grid grid-cols-2 gap-6 mb-8">
+              <div>
+                <h4 class="text-white font-bold text-sm mb-2">Before</h4>
+                <p id="study-challenge" class="text-neutral-400 text-sm leading-relaxed">
+                  Time-consuming cold email campaigns yielding poor results despite years of experience.
+                </p>
+              </div>
+              <div>
+                <h4 class="text-white font-bold text-sm mb-2">After</h4>
+                <p id="study-solution" class="text-neutral-400 text-sm leading-relaxed">
+                  $350k ARR added in just 7.5 months through precision outbound that consistently fills the pipeline.
+                </p>
+              </div>
+            </div>
+
+            <!-- Metrics -->
+            <div id="metrics-container" class="grid grid-cols-3 gap-4">
+              <!-- Metrics will be injected here by JS -->
+            </div>
           </div>
         </div>
       </div>
@@ -1800,7 +1802,7 @@ animation: pulse-slow 6s ease-in-out infinite;
           founder: {
             name: '',
             role: '',
-            image: 'Proof Elements website/12.png'
+            image: 'Proof Elements website/np-combined.png'
           },
           metrics: [
             { label: 'ARR Added', value: '$350K' },
