@@ -1729,6 +1729,46 @@ animation: pulse-slow 6s ease-in-out infinite;
     </div>
 
     <!-- Booking Modal -->
+    <!-- Exit Intent Modal -->
+    <div id="exit-intent-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Before you go">
+      <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeExitModal()"></div>
+      <div class="relative bg-[#1e2227] rounded-[2rem] shadow-2xl border border-[#2a2a2a] w-full max-w-lg p-10 text-center">
+        <button onclick="closeExitModal()" aria-label="Close exit modal" class="absolute top-4 right-4 bg-white/5 hover:bg-white/10 p-2 rounded-full text-neutral-400 transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+
+        <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-6">
+          <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+          <span class="text-xs font-medium text-white tracking-wide uppercase">Wait — before you go</span>
+        </div>
+
+        <h3 class="text-2xl md:text-3xl font-semibold text-white tracking-tight mb-4">
+          You only pay for <span class="font-serif-italic text-[#00b389] font-normal">qualified meetings</span> that show up.
+        </h3>
+
+        <p class="text-neutral-400 leading-relaxed mb-8">
+          Zero risk. Zero retainers. If we don't deliver meetings that meet your criteria, you don't pay. Simple as that.
+        </p>
+
+        <div class="flex flex-col items-center gap-4">
+          <div class="p-1 rounded-2xl bg-gradient-to-b from-[#00ffc4]/40 to-[#00ffc4]/15 shadow-[0_0_40px_rgba(0,255,196,0.25)]">
+            <button onclick="closeExitModal(); toggleModal(true);" class="relative group overflow-hidden bg-gradient-to-b from-[#00ffc4] to-[#00e6b0] text-black text-lg font-bold px-8 py-4 rounded-xl transition-all transform hover:scale-[1.01] active:scale-95 flex items-center gap-4 justify-center border border-white/30">
+              <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full animate-shimmer-ice pointer-events-none"></div>
+              <span class="relative z-10 tracking-wide">Apply For A Performance Campaign</span>
+              <div class="relative z-10 bg-white rounded-lg p-2 flex items-center justify-center shadow-md">
+                <i data-lucide="chevron-right" class="w-5 h-5 text-[#00e6b0] stroke-[3]"></i>
+              </div>
+            </button>
+          </div>
+
+          <div class="bg-white px-5 py-2 rounded-full flex items-center gap-2.5 shadow-md border border-neutral-100">
+            <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+            <span class="text-xs font-semibold text-neutral-600 tracking-wide">Very Limited Spots Available For <span class="scarcity-month"></span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div id="booking-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Book a discovery call">
       <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="toggleModal(false)"></div>
       <div class="relative bg-neutral-900 rounded-2xl shadow-2xl border border-white/10 w-full max-w-[900px] h-[700px] overflow-hidden">
@@ -1863,7 +1903,30 @@ animation: pulse-slow 6s ease-in-out infinite;
         });
       }
 
-      // ===== CASE STUDIES — now static HTML, no JS needed =====
+      // ===== EXIT INTENT =====
+      let exitShown = false;
+      function closeExitModal() {
+        document.getElementById('exit-intent-modal').classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+      document.addEventListener('mouseout', function(e) {
+        if (!e.relatedTarget && !e.toElement && e.clientY < 10 && !exitShown) {
+          exitShown = true;
+          const modal = document.getElementById('exit-intent-modal');
+          modal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+          lucide.createIcons({ nodes: modal.querySelectorAll('[data-lucide]') });
+        }
+      });
+      // Also close exit modal on Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          const exitModal = document.getElementById('exit-intent-modal');
+          if (exitModal && !exitModal.classList.contains('hidden')) {
+            closeExitModal();
+          }
+        }
+      });
 
     </script>
   
