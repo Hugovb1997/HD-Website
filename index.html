@@ -1876,16 +1876,11 @@ animation: pulse-slow 6s ease-in-out infinite;
         document.getElementById('study-tag').innerText = study.tag;
         document.getElementById('study-challenge').innerText = study.before;
         document.getElementById('study-solution').innerText = study.after;
-        document.getElementById('founder-name').innerText = study.founder.name;
-        document.getElementById('founder-role').innerText = study.founder.role;
         document.getElementById('hero-metric').innerText = study.heroMetric;
         document.getElementById('hero-label').innerText = study.heroMetricLabel;
         document.getElementById('hero-desc').innerText = study.heroDescription;
-        document.getElementById('hero-founder-name').innerText = study.founder.name;
-        document.getElementById('hero-founder-role').innerText = `${study.founder.role} AT ${study.title.toUpperCase()}`;
 
-        // Update Images
-        document.getElementById('founder-img').src = study.founder.image;
+        // Update Image
         document.getElementById('visual-img').src = study.founder.image;
 
         // Update Buttons (Active State)
