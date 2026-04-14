@@ -922,72 +922,45 @@ animation: pulse-slow 6s ease-in-out infinite;
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
           <!-- Left Info Card -->
-          <div class="lg:col-span-4 bg-white/[0.03] rounded-3xl p-8 border border-[#232323] flex flex-col justify-between h-full min-h-[420px] shadow-lg">
+          <div class="lg:col-span-5 bg-white/[0.03] rounded-3xl p-8 border border-[#232323] flex flex-col justify-between h-full min-h-[420px] shadow-lg">
             <div>
-              <div class="flex items-center justify-between mb-8">
-                <h3 id="study-title" class="text-4xl font-bold text-white tracking-tight">National Positions</h3>
+              <div class="flex items-center justify-between mb-6">
+                <h3 id="study-title" class="text-3xl font-bold text-white tracking-tight">National Positions</h3>
                 <span id="study-tag" class="text-[10px] font-bold text-[#00b389] border border-[#00b389]/30 px-3 py-1 rounded-full uppercase tracking-widest bg-[#00b389]/5">Agency</span>
               </div>
 
-              <div class="space-y-8">
+              <!-- Hero Metric -->
+              <div class="mb-6 pb-6 border-b border-[#00b389]/10">
+                <h2 id="hero-metric" class="text-5xl md:text-6xl font-black leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-orange-500 to-orange-700 mb-2">$350K</h2>
+                <h4 id="hero-label" class="text-lg font-bold text-white/80">ARR Added in 7.5 Months</h4>
+              </div>
+
+              <p id="hero-desc" class="text-neutral-400 text-sm leading-relaxed mb-6">
+                How we built a repeatable revenue engine for National Positions
+              </p>
+
+              <div class="space-y-5">
                 <div>
-                  <h4 class="text-white font-bold text-lg mb-2">Before</h4>
+                  <h4 class="text-white font-bold text-sm mb-1">Before</h4>
                   <p id="study-challenge" class="text-neutral-400 text-sm leading-relaxed">
                     Time-consuming cold email campaigns yielding poor results despite years of experience.
                   </p>
                 </div>
                 <div>
-                  <h4 class="text-white font-bold text-lg mb-2">After</h4>
+                  <h4 class="text-white font-bold text-sm mb-1">After</h4>
                   <p id="study-solution" class="text-neutral-400 text-sm leading-relaxed">
-                    91% better response rates than industry average, freeing up time to focus on strategic growth while we handle all technical aspects.
+                    $350k ARR added in just 7.5 months through precision outbound that consistently fills the pipeline.
                   </p>
                 </div>
               </div>
             </div>
-
-            <div class="mt-12 flex items-center justify-between pt-6 border-t border-[#00b389]/10">
-              <div class="flex items-center gap-4">
-                <img id="founder-img" src="Proof Elements website/12.png" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10">
-                <div>
-                  <p id="founder-name" class="text-white font-bold text-sm">Benjamin Douablin</p>
-                  <p id="founder-role" class="text-neutral-400 text-[10px] font-bold uppercase tracking-widest">Founder & CEO</p>
-                </div>
-              </div>
-              <button aria-label="View full case study" class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-black hover:scale-110 transition-transform shadow-lg shadow-black/20 focus-visible:ring-2 focus-visible:ring-[#00b389] focus-visible:outline-none">
-                <i data-lucide="plus" class="w-5 h-5"></i>
-              </button>
-            </div>
           </div>
 
-          <!-- Right Hero Card -->
-          <div class="lg:col-span-8 bg-white/[0.03] rounded-3xl border border-[#232323] relative overflow-hidden group min-h-[420px] shadow-lg">
-            <img id="visual-img" src="Proof Elements website/12.png" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
-            
-            <div class="relative z-10 p-10 h-full flex flex-col justify-center">
-              <span class="text-orange-500 font-bold text-xs uppercase tracking-[0.3em] mb-4 block">CASE STUDY</span>
-              <div class="flex items-start gap-4 mb-4">
-                <h2 id="hero-metric" class="text-7xl font-black text-white leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-orange-500 to-orange-700">$350K</h2>
-                </div>
-              <h4 id="hero-label" class="text-3xl font-bold text-white mb-2">ARR Added in 7.5 Months</h4>
-              <p id="hero-desc" class="text-white/80 text-lg font-medium italic max-w-md mb-8">
-                How we built a repeatable revenue engine for National Positions
-              </p>
-
-              <div class="mt-auto">
-                <p id="hero-founder-name" class="text-white font-bold">Benjamin Douablin</p>
-                <p id="hero-founder-role" class="text-neutral-400 text-[10px] font-bold uppercase tracking-widest">FOUNDER & CEO AT NATIONAL POSITIONS</p>
-              </div>
-
-              <!-- Play Button Overlay -->
-              <div class="absolute top-1/2 left-2/3 -translate-x-1/2 -translate-y-1/2">
-                <button aria-label="Play case study video" class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform group/play focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none">
-                  <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
-                </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <!-- Right Image Card -->
+          <div class="lg:col-span-7 bg-white/[0.03] rounded-3xl border border-[#232323] relative overflow-hidden min-h-[420px] shadow-lg flex items-center justify-center p-6">
+            <img id="visual-img" src="Proof Elements website/12.png" class="max-w-full max-h-[400px] object-contain rounded-2xl">
+          </div>
+        </div>
 
         <!-- Metrics Bottom Row -->
         <div id="metrics-container" class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
