@@ -911,9 +911,14 @@ animation: pulse-slow 6s ease-in-out infinite;
 
         <!-- Main Content -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-          <!-- Left: Proof Image -->
-          <div class="bg-[#1a1d22] rounded-2xl border border-[#2a2a2a] overflow-hidden relative min-h-[400px] lg:min-h-[460px]">
-            <img id="visual-img" src="Proof Elements website/np-combined.png" class="absolute inset-0 w-full h-full object-cover rounded-2xl">
+          <!-- Left: Proof Images -->
+          <div id="visual-container" class="flex flex-col gap-3">
+            <div class="bg-[#1a1d22] rounded-2xl border border-[#2a2a2a] overflow-hidden">
+              <img id="visual-img" src="Proof Elements website/11.png" class="w-full h-auto rounded-2xl">
+            </div>
+            <div id="visual-img-2-wrapper" class="bg-[#1a1d22] rounded-2xl border border-[#2a2a2a] overflow-hidden">
+              <img id="visual-img-2" src="Proof Elements website/12-cropped.png" class="w-full h-auto rounded-2xl">
+            </div>
           </div>
 
           <!-- Right: Info -->
@@ -1799,11 +1804,7 @@ animation: pulse-slow 6s ease-in-out infinite;
           heroMetric: '$350K',
           heroMetricLabel: 'ARR Added in 7.5 Months',
           heroDescription: "How we built a repeatable revenue engine for National Positions",
-          founder: {
-            name: '',
-            role: '',
-            image: 'Proof Elements website/np-combined.png'
-          },
+          images: ['Proof Elements website/11.png', 'Proof Elements website/12-cropped.png'],
           metrics: [
             { label: 'ARR Added', value: '$350K' },
             { label: 'Timeframe', value: '7.5 mo' },
@@ -1821,11 +1822,7 @@ animation: pulse-slow 6s ease-in-out infinite;
           heroMetric: '55',
           heroMetricLabel: 'Qualified Calls in 3 Months',
           heroDescription: "How we filled Avalaunch Media's calendar with qualified prospects",
-          founder: {
-            name: '',
-            role: '',
-            image: 'Proof Elements website/10.png'
-          },
+          images: ['Proof Elements website/10.png'],
           metrics: [
             { label: 'Qualified Calls', value: '55' },
             { label: 'Timeframe', value: '3 mo' },
@@ -1843,11 +1840,7 @@ animation: pulse-slow 6s ease-in-out infinite;
           heroMetric: '1:5.3',
           heroMetricLabel: 'Lead-to-Contact Ratio',
           heroDescription: "How we turned IntellaWaste's outreach into a lead machine",
-          founder: {
-            name: '',
-            role: '',
-            image: 'Proof Elements website/8.png'
-          },
+          images: ['Proof Elements website/8.png'],
           metrics: [
             { label: 'Lead per Contacts', value: '1:5.3' },
             { label: 'Conversion', value: '18.9%' },
@@ -1868,8 +1861,13 @@ animation: pulse-slow 6s ease-in-out infinite;
         document.getElementById('hero-label').innerText = study.heroMetricLabel;
         document.getElementById('hero-desc').innerText = study.heroDescription;
 
-        // Update Image
-        document.getElementById('visual-img').src = study.founder.image;
+        // Update Images
+        const container = document.getElementById('visual-container');
+        container.innerHTML = study.images.map(src => `
+          <div class="bg-[#1a1d22] rounded-2xl border border-[#2a2a2a] overflow-hidden">
+            <img src="${src}" class="w-full h-auto rounded-2xl">
+          </div>
+        `).join('');
 
         // Update Tabs
         const buttonsHtml = CASE_STUDIES.map(s => {
