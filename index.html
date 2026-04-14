@@ -896,129 +896,114 @@ animation: pulse-slow 6s ease-in-out infinite;
     </section>
 
     <!-- Case Studies Section -->
-    <section id="case-studies" class="py-24 bg-[#050505] border-t border-white/5">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div>
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 border border-[#00b389]/40 text-[#00b389] rounded-lg font-bold text-[11px] uppercase tracking-widest bg-[#00b389]/10 mb-6">
-              Case Studies &amp; Results
-            </div>
-            <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-4">
-              Proof is in the <span class="font-serif-italic font-normal text-[#00b389]">pudding.</span>
-            </h2>
-            <p class="text-lg text-neutral-400 max-w-xl">
-              Real revenue impact for B2B companies we partner with.
-            </p>
+    <section id="case-studies" class="relative py-24" style="background: radial-gradient(50% 45% at 30% 60%, #2a0f18 0%, #121418 100%)">
+      <div class="max-w-6xl mx-auto px-6 relative z-10">
+        <!-- Header -->
+        <div class="text-center mb-24">
+          <div class="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-1.5 mb-6">
+            <span class="w-2 h-2 rounded-full bg-[#00b389] animate-pulse"></span>
+            <span class="text-xs font-medium text-white tracking-wide uppercase">Case Studies &amp; Results</span>
           </div>
+          <h2 class="text-4xl md:text-6xl font-semibold text-white tracking-tight leading-[1.1] max-w-4xl mx-auto">
+            Proof is in the <span class="font-serif-italic text-[#00b389] font-normal">pudding.</span>
+          </h2>
         </div>
 
-        <div class="space-y-12">
-          <!-- Case Study 1: National Positions -->
-          <div class="bg-neutral-900 rounded-[2.5rem] p-8 md:p-12 shadow-2xl shadow-[#00b389]/5 border border-white/5 flex flex-col md:flex-row gap-10 items-center relative overflow-hidden group">
-            <div class="flex-1 space-y-6 relative z-10">
-              <div class="flex items-center gap-3">
-                <img src="logos/NP-logo.webp" class="h-6 object-contain" alt="National Positions">
+        <!-- Case Study Cards -->
+        <div class="relative w-full space-y-12">
+
+          <!-- National Positions -->
+          <div class="bg-[#1e2227] rounded-[2.5rem] p-8 md:p-12 border border-[#2a2a2a] flex flex-col md:flex-row gap-12 relative overflow-hidden">
+            <div class="md:w-1/2 flex flex-col justify-center">
+              <div class="flex items-center gap-3 mb-6">
+                <img src="logos/NP-logo.webp" class="h-5 object-contain" alt="National Positions">
                 <span class="text-neutral-500 text-sm font-medium">National Positions</span>
               </div>
-              <h3 class="text-4xl md:text-5xl font-semibold text-white tracking-tight leading-tight">
-                $350K ARR added in 7.5 months.
-              </h3>
-              <p class="text-lg text-neutral-400 leading-relaxed">
-                From time-consuming cold campaigns with poor results to a precision outbound engine that consistently fills the pipeline.
-              </p>
-              <div class="space-y-3">
-                <div class="flex items-center gap-3">
-                  <i data-lucide="check-circle-2" class="w-5 h-5 text-[#00b389]"></i>
-                  <span class="text-neutral-300 font-medium">$350K in new annual recurring revenue</span>
+              <h3 class="text-3xl font-semibold text-white tracking-tight mb-4">$350K ARR added in 7.5 months.</h3>
+              <p class="text-neutral-400 leading-relaxed mb-8">From time-consuming cold campaigns with poor results to a precision outbound engine that consistently fills the pipeline.</p>
+              <div class="space-y-4 mb-8">
+                <div class="flex items-start gap-3">
+                  <div class="mt-1 bg-[#059669]/20 p-1 rounded-full"><i data-lucide="check" class="w-3 h-3 text-[#00b389]"></i></div>
+                  <span class="text-sm text-neutral-300 font-medium">$350K in new annual recurring revenue</span>
                 </div>
-                <div class="flex items-center gap-3">
-                  <i data-lucide="check-circle-2" class="w-5 h-5 text-[#00b389]"></i>
-                  <span class="text-neutral-300 font-medium">Repeatable outbound system built from scratch</span>
+                <div class="flex items-start gap-3">
+                  <div class="mt-1 bg-[#059669]/20 p-1 rounded-full"><i data-lucide="check" class="w-3 h-3 text-[#00b389]"></i></div>
+                  <span class="text-sm text-neutral-300 font-medium">Repeatable outbound system built from scratch</span>
                 </div>
               </div>
-              <button onclick="toggleModal(true)"
-                class="btn-glow inline-flex items-center justify-center bg-white text-black px-8 py-4 rounded-full font-medium transition-transform hover:-translate-y-1 hover:shadow-lg">
+              <button onclick="toggleModal(true)" class="btn-glow inline-flex items-center justify-center bg-white text-black px-8 py-4 rounded-full font-medium transition-transform hover:-translate-y-1 hover:shadow-lg w-fit">
                 Book Your Demo
               </button>
             </div>
-            <div class="flex-1 w-full flex flex-col gap-3">
-              <div class="rounded-[2rem] overflow-hidden border border-white/5">
+            <div class="md:w-1/2 flex flex-col gap-3 justify-center">
+              <div class="bg-black rounded-2xl border border-white/10 overflow-hidden">
                 <img src="Proof Elements website/11.png" class="w-full h-auto" alt="National Positions proof">
               </div>
-              <div class="rounded-[2rem] overflow-hidden border border-white/5">
+              <div class="bg-black rounded-2xl border border-white/10 overflow-hidden">
                 <img src="Proof Elements website/12-cropped.png" class="w-full h-auto" alt="National Positions proof">
               </div>
             </div>
           </div>
 
-          <!-- Case Study 2: Avalaunch Media -->
-          <div class="bg-neutral-900 rounded-[2.5rem] p-8 md:p-12 shadow-2xl shadow-[#00b389]/5 border border-white/5 flex flex-col md:flex-row-reverse gap-10 items-center relative overflow-hidden group">
-            <div class="flex-1 space-y-6 relative z-10">
-              <div class="flex items-center gap-3">
+          <!-- Avalaunch Media -->
+          <div class="bg-[#1e2227] rounded-[2.5rem] p-8 md:p-12 border border-[#2a2a2a] flex flex-col md:flex-row-reverse gap-12 relative overflow-hidden">
+            <div class="md:w-1/2 flex flex-col justify-center">
+              <div class="flex items-center gap-3 mb-6">
                 <span class="text-neutral-500 text-sm font-medium">Avalaunch Media</span>
               </div>
-              <h3 class="text-4xl md:text-5xl font-semibold text-white tracking-tight leading-tight">
-                55 qualified calls booked in 3 months.
-              </h3>
-              <p class="text-lg text-neutral-400 leading-relaxed">
-                From zero outbound signal and manual referrals to a multi-channel prospecting system filling the calendar with qualified prospects.
-              </p>
-              <div class="space-y-3">
-                <div class="flex items-center gap-3">
-                  <i data-lucide="check-circle-2" class="w-5 h-5 text-[#00b389]"></i>
-                  <span class="text-neutral-300 font-medium">55 qualified sales calls in 90 days</span>
+              <h3 class="text-3xl font-semibold text-white tracking-tight mb-4">55 qualified calls booked in 3 months.</h3>
+              <p class="text-neutral-400 leading-relaxed mb-8">From zero outbound signal and manual referrals to a multi-channel prospecting system filling the calendar with qualified prospects.</p>
+              <div class="space-y-4 mb-8">
+                <div class="flex items-start gap-3">
+                  <div class="mt-1 bg-[#059669]/20 p-1 rounded-full"><i data-lucide="check" class="w-3 h-3 text-[#00b389]"></i></div>
+                  <span class="text-sm text-neutral-300 font-medium">55 qualified sales calls in 90 days</span>
                 </div>
-                <div class="flex items-center gap-3">
-                  <i data-lucide="check-circle-2" class="w-5 h-5 text-[#00b389]"></i>
-                  <span class="text-neutral-300 font-medium">Built from zero outbound base</span>
+                <div class="flex items-start gap-3">
+                  <div class="mt-1 bg-[#059669]/20 p-1 rounded-full"><i data-lucide="check" class="w-3 h-3 text-[#00b389]"></i></div>
+                  <span class="text-sm text-neutral-300 font-medium">Built from zero outbound base</span>
                 </div>
               </div>
-              <button onclick="toggleModal(true)"
-                class="btn-glow inline-flex items-center justify-center bg-white text-black px-8 py-4 rounded-full font-medium transition-transform hover:-translate-y-1 hover:shadow-lg">
+              <button onclick="toggleModal(true)" class="btn-glow inline-flex items-center justify-center bg-white text-black px-8 py-4 rounded-full font-medium transition-transform hover:-translate-y-1 hover:shadow-lg w-fit">
                 Book Your Demo
               </button>
             </div>
-            <div class="flex-1 w-full">
-              <div class="rounded-[2rem] overflow-hidden border border-white/5">
+            <div class="md:w-1/2 flex items-center justify-center">
+              <div class="bg-black rounded-2xl border border-white/10 overflow-hidden">
                 <img src="Proof Elements website/10.png" class="w-full h-auto" alt="Avalaunch Media proof">
               </div>
             </div>
           </div>
 
-          <!-- Case Study 3: IntellaWaste -->
-          <div class="bg-neutral-900 rounded-[2.5rem] p-8 md:p-12 shadow-2xl shadow-[#00b389]/5 border border-white/5 flex flex-col md:flex-row gap-10 items-center relative overflow-hidden group">
-            <div class="flex-1 space-y-6 relative z-10">
-              <div class="flex items-center gap-3">
-                <img src="logos/IntellaWaste Logo.png" class="h-6 object-contain" alt="IntellaWaste">
+          <!-- IntellaWaste -->
+          <div class="bg-[#1e2227] rounded-[2.5rem] p-8 md:p-12 border border-[#2a2a2a] flex flex-col md:flex-row gap-12 relative overflow-hidden">
+            <div class="md:w-1/2 flex flex-col justify-center">
+              <div class="flex items-center gap-3 mb-6">
+                <img src="logos/IntellaWaste Logo.png" class="h-5 object-contain" alt="IntellaWaste">
                 <span class="text-neutral-500 text-sm font-medium">IntellaWaste</span>
               </div>
-              <h3 class="text-4xl md:text-5xl font-semibold text-white tracking-tight leading-tight">
-                1 lead for every 5.3 contacts.
-              </h3>
-              <p class="text-lg text-neutral-400 leading-relaxed">
-                From burning 20+ hours weekly on manual outreach to an industry-leading conversion rate through hyper-targeted campaigns.
-              </p>
-              <div class="space-y-3">
-                <div class="flex items-center gap-3">
-                  <i data-lucide="check-circle-2" class="w-5 h-5 text-[#00b389]"></i>
-                  <span class="text-neutral-300 font-medium">18.9% contact-to-lead conversion rate</span>
+              <h3 class="text-3xl font-semibold text-white tracking-tight mb-4">1 lead for every 5.3 contacts.</h3>
+              <p class="text-neutral-400 leading-relaxed mb-8">From burning 20+ hours weekly on manual outreach to an industry-leading conversion rate through hyper-targeted campaigns.</p>
+              <div class="space-y-4 mb-8">
+                <div class="flex items-start gap-3">
+                  <div class="mt-1 bg-[#059669]/20 p-1 rounded-full"><i data-lucide="check" class="w-3 h-3 text-[#00b389]"></i></div>
+                  <span class="text-sm text-neutral-300 font-medium">18.9% contact-to-lead conversion rate</span>
                 </div>
-                <div class="flex items-center gap-3">
-                  <i data-lucide="check-circle-2" class="w-5 h-5 text-[#00b389]"></i>
-                  <span class="text-neutral-300 font-medium">Fully automated outreach pipeline</span>
+                <div class="flex items-start gap-3">
+                  <div class="mt-1 bg-[#059669]/20 p-1 rounded-full"><i data-lucide="check" class="w-3 h-3 text-[#00b389]"></i></div>
+                  <span class="text-sm text-neutral-300 font-medium">Fully automated outreach pipeline</span>
                 </div>
               </div>
-              <button onclick="toggleModal(true)"
-                class="btn-glow inline-flex items-center justify-center bg-white text-black px-8 py-4 rounded-full font-medium transition-transform hover:-translate-y-1 hover:shadow-lg">
+              <button onclick="toggleModal(true)" class="btn-glow inline-flex items-center justify-center bg-white text-black px-8 py-4 rounded-full font-medium transition-transform hover:-translate-y-1 hover:shadow-lg w-fit">
                 Book Your Demo
               </button>
             </div>
-            <div class="flex-1 w-full">
-              <div class="rounded-[2rem] overflow-hidden border border-white/5">
+            <div class="md:w-1/2 flex items-center justify-center">
+              <div class="bg-black rounded-2xl border border-white/10 overflow-hidden">
                 <img src="Proof Elements website/8.png" class="w-full h-auto" alt="IntellaWaste proof">
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
