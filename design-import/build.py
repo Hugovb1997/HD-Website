@@ -205,6 +205,15 @@ head_inner = helmet.group(1)
 head_inner = re.sub(r'<script src="\./image-slot\.js"></script>\s*', "", head_inner)
 head_inner = re.sub(r"<title>.*?</title>\s*", "", head_inner, flags=re.S)
 
+# The canvas ships an accessibility rule that flattens every animation to
+# .01ms when the visitor's OS has "Reduce Motion" on. Hugo wants the page
+# animated for everyone (2026-08-20) — his own machine has that setting
+# enabled and the page looked completely static to him. Strip the rule.
+RM_RULE = re.compile(r"@media \(prefers-reduced-motion: reduce\)\{.*?\}\}\n?")
+head_inner, n_rm = RM_RULE.subn("", head_inner)
+if n_rm != 1:
+    fail("expected 1 prefers-reduced-motion rule in canvas, found %d" % n_rm)
+
 body = raw[raw.index("</helmet>") + len("</helmet>"): raw.rindex("</x-dc>")]
 
 # ---------------------------------------------------------------------------
