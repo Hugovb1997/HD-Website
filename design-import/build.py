@@ -98,14 +98,17 @@ SLOTS = {
     "arc-av-4": ("Testimonials/Theo Gors.jpeg", "Theo Görs", "cover", False),
     "arc-av-5": ("Profile Pic Hugo/Tom Zanoli.jpeg", "Tom Zanoli", "cover", False),
 
-    "reply-7": ("Screenshots/Attached_image7.png", "Cold email reply from a prospect", "natural", True),
-    "reply-1": ("Screenshots/Attached_image.png",  "Cold email reply from a prospect", "natural", True),
-    "reply-2": ("Screenshots/Attached_image2.png", "Cold email reply from a prospect", "natural", True),
-    "reply-3": ("Screenshots/Attached_image3.png", "Cold email reply from a prospect", "natural", True),
-    "reply-4": ("Screenshots/Attached_image4.png", "Cold email reply from a prospect", "natural", True),
-    "reply-8": ("Screenshots/Attached_image8.png", "Cold email reply from a prospect", "natural", True),
-    "reply-6": ("Screenshots/Attached_image6.png", "Cold email reply from a prospect", "natural", True),
-    "reply-5": ("Screenshots/Attached_image5.png", "Cold email reply from a prospect", "natural", True),
+    # trimmed/ = alpha-trimmed derivatives (the originals are 2000x1414 canvases
+    # where the email floats in transparent padding and looked lost in the card;
+    # regenerate via the alpha-bbox crop in the repo history if sources change)
+    "reply-7": ("Screenshots/trimmed/Attached_image7.png", "Cold email reply from a prospect", "natural", True),
+    "reply-1": ("Screenshots/trimmed/Attached_image.png",  "Cold email reply from a prospect", "natural", True),
+    "reply-2": ("Screenshots/trimmed/Attached_image2.png", "Cold email reply from a prospect", "natural", True),
+    "reply-3": ("Screenshots/trimmed/Attached_image3.png", "Cold email reply from a prospect", "natural", True),
+    "reply-4": ("Screenshots/trimmed/Attached_image4.png", "Cold email reply from a prospect", "natural", True),
+    "reply-8": ("Screenshots/trimmed/Attached_image8.png", "Cold email reply from a prospect", "natural", True),
+    "reply-6": ("Screenshots/trimmed/Attached_image6.png", "Cold email reply from a prospect", "natural", True),
+    "reply-5": ("Screenshots/trimmed/Attached_image5.png", "Cold email reply from a prospect", "natural", True),
 
     "avatar-jesse":   ("Testimonials/Jesse Bak.jpeg", "Jesse Bak", "cover", True),
     "avatar-ajinder": ("Testimonials/Ajinder Banns.jpeg", "Ajinder Banns", "cover", True),
