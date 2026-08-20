@@ -83,7 +83,6 @@ cal-modal-box{z-index:200}
 @media (max-width:900px){
   #nav-burger{display:inline-flex}
   .compare-hint{display:block}
-  .phase-sticky{position:relative !important;top:auto !important;margin-bottom:24px !important}
   .phase-card,.cs-card{grid-template-columns:minmax(0,1fr) !important;min-height:0 !important}
   .cs-media-first{order:2 !important}
   .cs-text-second{order:1 !important}
@@ -1147,6 +1146,30 @@ Cal.ns["30min"]("ui", {"theme":"dark","hideEventTypeDetails":false,"layout":"mon
     }
     burger.addEventListener('click',function(){setMenu(panel.hidden);});
     panel.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false);});
+  }
+
+  // Stacking phase cards, small screens: a card can be taller than the
+  // viewport, and with the canvas's fixed top offsets (88..148px) it would
+  // pin before its tail had ever been on screen — the tail would then be
+  // covered by the next card, unread. Pin each card at
+  // min(design offset, viewport - card height - 12) instead: short cards keep
+  // the designed stagger, tall cards pin the moment they are fully visible,
+  // and the flow-over stacking effect works at every size.
+  var phaseCards=document.querySelectorAll('.phase-sticky');
+  function tunePhaseTops(){
+    phaseCards.forEach(function(el){
+      if(!el.dataset.designTop){
+        var m=(el.getAttribute('style')||'').match(/top:(\d+)px/);
+        el.dataset.designTop=m?m[1]:'88';
+      }
+      var fit=window.innerHeight-el.offsetHeight-12;
+      el.style.top=Math.min(parseInt(el.dataset.designTop,10),fit)+'px';
+    });
+  }
+  if(phaseCards.length){
+    tunePhaseTops();
+    window.addEventListener('resize',tunePhaseTops);
+    window.addEventListener('load',function(){tunePhaseTops();setTimeout(tunePhaseTops,400);});
   }
 
   var dismiss=document.getElementById('floating-dismiss');
