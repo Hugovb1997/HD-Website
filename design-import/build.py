@@ -466,8 +466,8 @@ body = drop_style(body, ";height:250px;transition", ";transition", expect=6)
 body = drop_style(
     body,
     '<div style="height:calc(100% - 22px)">',
-    '<div style="height:calc(100% - 22px);overflow:hidden;display:flex;'
-    'align-items:center;border-radius:10px">',
+    '<div class="rf-media" style="height:calc(100% - 22px);overflow:hidden;'
+    'display:flex;align-items:center;border-radius:10px">',
     expect=2,
 )
 body = drop_style(body, '<div style="height:calc(100% - 20px)">', "<div>", expect=6)
@@ -488,6 +488,10 @@ body = add_class(body, "width:480px;height:480px", "orbit", expect=1)
 body = add_class(body, "gap:26px;font-size:14px", "nav-actions", expect=1)
 body = add_class(body, "letter-spacing:.14em;text-transform:uppercase;color:#7d7484;border:1px solid", "nav-badge", expect=1)
 # leading ';' required — bare "order:1" also matches inside "border:1px"
+body = add_class(body, "grid-column:span 2", "reply-featured", expect=2)
+body = add_class(body, "font-weight:700;font-size:16px;letter-spacing:-.01em", "nav-name", expect=1)
+body = add_class(body, "width:30px;height:30px;border-radius:50%;overflow:hidden;border:2px solid rgba(0,0,0,.4)", "nav-cta-avatar", expect=1)
+body = add_class(body, "font-size:clamp(60px,9.5vw,140px)", "footer-giant", expect=1)
 body = add_class(body, ";order:1;", "cs-media-first", expect=1)
 body = add_class(body, ";order:2;", "cs-text-second", expect=1)
 
@@ -496,7 +500,12 @@ for anchor in ("#methodology", "#case-studies", "#faq"):
     body = add_class_by_href(body, anchor, "nav-link", expect=1)
 
 # comparison table gets a horizontal scroll container on narrow screens
-body = body.replace('<div class="compare-grid"', '<div class="table-scroll"><div class="compare-grid"', 1)
+body = body.replace(
+    '<div class="compare-grid"',
+    '<div class="compare-hint" aria-hidden="true">swipe to compare &rarr;</div>'
+    '<div class="table-scroll"><div class="compare-grid"',
+    1,
+)
 body = body.replace("</sc-for-close-marker>", "")
 idx = body.index('<div class="table-scroll">')
 end = body.index("</div>\n  </div>\n</section>", idx)
@@ -556,10 +565,14 @@ cal-modal-box{z-index:200}
   backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.1);
   padding:10px 24px 16px;display:flex;flex-direction:column;gap:4px}
 #mobile-nav[hidden]{display:none}
-#mobile-nav .nav-link{display:block !important;padding:10px 0;font-size:15px;font-weight:500}
+#mobile-nav .nav-link{display:block !important;padding:12px 0;font-size:15px;font-weight:500}
+
+.compare-hint{display:none;font-family:'JetBrains Mono',monospace;font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:#00ffc4;text-align:right;margin:0 0 10px}
 
 @media (max-width:900px){
   #nav-burger{display:inline-flex}
+  .compare-hint{display:block}
   .phase-sticky{position:relative !important;top:auto !important;margin-bottom:24px !important}
   .phase-card,.cs-card{grid-template-columns:minmax(0,1fr) !important;min-height:0 !important}
   .cs-media-first{order:2 !important}
@@ -576,10 +589,33 @@ cal-modal-box{z-index:200}
   section,header{padding-left:18px !important;padding-right:18px !important}
   .phase-card,.cs-card{padding:26px !important}
   .orbit{transform:scale(.68);margin:-76px 0}
-  .nav-actions{gap:12px !important}
+  .nav-actions{gap:10px !important}
   /* the long CTA label needs room to breathe at 390px */
   .cta-primary{font-size:15px !important;padding:14px 20px !important;text-align:center}
   h1{font-size:clamp(34px,9vw,46px) !important}
+
+  /* one-line brand + compact nav CTA so the header fits a 360px phone */
+  .nav-name{white-space:nowrap;font-size:14px !important}
+  .nav-cta-avatar{display:none !important}
+  .nav-actions>a[data-book]{font-size:12.5px !important;padding:8px 14px !important}
+
+  /* the fixed testimonial pop-over covers a third of a phone viewport and its
+     right edge clips below 384px-wide screens — desktop-only element */
+  #floating-card{display:none !important}
+
+  /* featured reply frames: the 320px crop window letterboxes a full-width
+     phone image (~240px tall) — let the screenshot set the height instead */
+  .reply-featured{height:auto !important}
+  .rf-media{height:auto !important}
+
+  /* the FAQ answer's 62px indent leaves ~240px of text width on a phone */
+  .faq-panel p{margin:0 18px 20px 18px !important}
+
+  /* "HUMAIN DEMAND" outline text is ~470px wide at the clamp minimum and
+     clips off the right edge; 13vw keeps all 13 characters on screen */
+  .footer-giant{font-size:13vw !important}
+
+  footer a{padding:6px 2px}
 }
 """
 

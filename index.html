@@ -74,10 +74,14 @@ cal-modal-box{z-index:200}
   backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.1);
   padding:10px 24px 16px;display:flex;flex-direction:column;gap:4px}
 #mobile-nav[hidden]{display:none}
-#mobile-nav .nav-link{display:block !important;padding:10px 0;font-size:15px;font-weight:500}
+#mobile-nav .nav-link{display:block !important;padding:12px 0;font-size:15px;font-weight:500}
+
+.compare-hint{display:none;font-family:'JetBrains Mono',monospace;font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:#00ffc4;text-align:right;margin:0 0 10px}
 
 @media (max-width:900px){
   #nav-burger{display:inline-flex}
+  .compare-hint{display:block}
   .phase-sticky{position:relative !important;top:auto !important;margin-bottom:24px !important}
   .phase-card,.cs-card{grid-template-columns:minmax(0,1fr) !important;min-height:0 !important}
   .cs-media-first{order:2 !important}
@@ -94,10 +98,33 @@ cal-modal-box{z-index:200}
   section,header{padding-left:18px !important;padding-right:18px !important}
   .phase-card,.cs-card{padding:26px !important}
   .orbit{transform:scale(.68);margin:-76px 0}
-  .nav-actions{gap:12px !important}
+  .nav-actions{gap:10px !important}
   /* the long CTA label needs room to breathe at 390px */
   .cta-primary{font-size:15px !important;padding:14px 20px !important;text-align:center}
   h1{font-size:clamp(34px,9vw,46px) !important}
+
+  /* one-line brand + compact nav CTA so the header fits a 360px phone */
+  .nav-name{white-space:nowrap;font-size:14px !important}
+  .nav-cta-avatar{display:none !important}
+  .nav-actions>a[data-book]{font-size:12.5px !important;padding:8px 14px !important}
+
+  /* the fixed testimonial pop-over covers a third of a phone viewport and its
+     right edge clips below 384px-wide screens — desktop-only element */
+  #floating-card{display:none !important}
+
+  /* featured reply frames: the 320px crop window letterboxes a full-width
+     phone image (~240px tall) — let the screenshot set the height instead */
+  .reply-featured{height:auto !important}
+  .rf-media{height:auto !important}
+
+  /* the FAQ answer's 62px indent leaves ~240px of text width on a phone */
+  .faq-panel p{margin:0 18px 20px 18px !important}
+
+  /* "HUMAIN DEMAND" outline text is ~470px wide at the clamp minimum and
+     clips off the right edge; 13vw keeps all 13 characters on screen */
+  .footer-giant{font-size:13vw !important}
+
+  footer a{padding:6px 2px}
 }
 .hv1:hover{color:#fff !important}
 .hv2:hover{color:#fff !important}
@@ -168,14 +195,14 @@ cal-modal-box{z-index:200}
   <div style="max-width:1240px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px">
     <div style="display:flex;align-items:center;gap:10px">
       <img src="logos/Humain Demand_A2 (2).jpg" alt="Humain Demand" style="display:block;width:100%;height:100%;border-radius:7px;object-fit:cover;width:28px;height:28px">
-      <span style="font-weight:700;font-size:16px;letter-spacing:-.01em;color:#fff">Humain Demand</span>
+      <span class="nav-name" style="font-weight:700;font-size:16px;letter-spacing:-.01em;color:#fff">Humain Demand</span>
       <span class="nav-badge" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#7d7484;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:3px 10px;margin-left:6px">Outbound engineering</span>
     </div>
     <div class="nav-actions" style="display:flex;align-items:center;gap:26px;font-size:14px;font-weight:500">
       <a class="nav-link hv1" href="#methodology" style="color:#a49daa">Methodology</a>
       <a class="nav-link hv2" href="#case-studies" style="color:#a49daa">Case Studies</a>
       <a class="nav-link hv3" href="#faq" style="color:#a49daa">FAQ</a>
-      <a class="hv4" href="https://cal.com/hugo-van-baal-agjtxz/30min?overlayCalendar=true" data-book="1" data-cal-namespace="30min" data-cal-link="hugo-van-baal-agjtxz/30min" data-cal-config='{"layout":"month_view","theme":"dark"}' style="display:inline-flex;align-items:center;gap:10px;background:#00ffc4;color:#000;font-weight:700;padding:6px 6px 6px 18px;border-radius:999px;font-size:13.5px;position:relative;overflow:hidden"><span style="position:absolute;top:0;bottom:0;left:0;width:45%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.55),transparent);animation:shimmer 3.2s ease-in-out infinite"></span><span style="position:relative">Book Your Demo</span><span style="position:relative;width:30px;height:30px;border-radius:50%;overflow:hidden;border:2px solid rgba(0,0,0,.4)"><img src="Profile Pic Hugo/Hugo (Me) profile Pic.jpeg" alt="Hugo van Baal" style="display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;"></span></a>
+      <a class="hv4" href="https://cal.com/hugo-van-baal-agjtxz/30min?overlayCalendar=true" data-book="1" data-cal-namespace="30min" data-cal-link="hugo-van-baal-agjtxz/30min" data-cal-config='{"layout":"month_view","theme":"dark"}' style="display:inline-flex;align-items:center;gap:10px;background:#00ffc4;color:#000;font-weight:700;padding:6px 6px 6px 18px;border-radius:999px;font-size:13.5px;position:relative;overflow:hidden"><span style="position:absolute;top:0;bottom:0;left:0;width:45%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.55),transparent);animation:shimmer 3.2s ease-in-out infinite"></span><span style="position:relative">Book Your Demo</span><span class="nav-cta-avatar" style="position:relative;width:30px;height:30px;border-radius:50%;overflow:hidden;border:2px solid rgba(0,0,0,.4)"><img src="Profile Pic Hugo/Hugo (Me) profile Pic.jpeg" alt="Hugo van Baal" style="display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;"></span></a>
     </div>
   </div>
 </nav>
@@ -256,9 +283,9 @@ cal-modal-box{z-index:200}
       <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,4.5vw,62px);line-height:1.05;color:#fff;text-transform:uppercase;max-width:900px;text-wrap:balance">How prospects respond when cold outreach <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;text-transform:none;color:#00ffc4">actually works.</span></h2>
     </div>
     <div class="reply-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:1000px;margin:0 auto">
-      <div class="hv14" style="grid-column:span 2;position:relative;background:#fff;border-radius:16px;padding:12px 12px 34px;transform:rotate(-.5deg);box-shadow:0 24px 60px rgba(0,0,0,.5);height:320px;max-width:760px;margin:0 auto;width:100%;transition:transform .4s,box-shadow .4s">
+      <div class="reply-featured hv14" style="grid-column:span 2;position:relative;background:#fff;border-radius:16px;padding:12px 12px 34px;transform:rotate(-.5deg);box-shadow:0 24px 60px rgba(0,0,0,.5);height:320px;max-width:760px;margin:0 auto;width:100%;transition:transform .4s,box-shadow .4s">
         <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%) rotate(-2deg);width:110px;height:26px;background:rgba(0,255,196,.4);backdrop-filter:blur(4px);border-radius:3px"></div>
-        <div style="height:calc(100% - 22px);overflow:hidden;display:flex;align-items:center;border-radius:10px"><img src="Screenshots/Attached_image7.png" alt="Cold email reply from a prospect" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;"></div>
+        <div class="rf-media" style="height:calc(100% - 22px);overflow:hidden;display:flex;align-items:center;border-radius:10px"><img src="Screenshots/Attached_image7.png" alt="Cold email reply from a prospect" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;"></div>
         <span style="position:absolute;bottom:9px;left:16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9a93a1">reply_001.png — verbatim</span>
       </div>
       <div class="hv15" style="position:relative;background:#fff;border-radius:16px;padding:10px 10px 30px;transform:rotate(.8deg);box-shadow:0 20px 50px rgba(0,0,0,.45);transition:transform .4s,box-shadow .4s">
@@ -281,9 +308,9 @@ cal-modal-box{z-index:200}
         <div><img src="Screenshots/Attached_image4.png" alt="Cold email reply from a prospect" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;"></div>
         <span style="position:absolute;bottom:8px;left:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9a93a1">reply_005.png</span>
       </div>
-      <div class="hv19" style="grid-column:span 2;position:relative;background:#fff;border-radius:16px;padding:12px 12px 34px;transform:rotate(.4deg);box-shadow:0 24px 60px rgba(0,0,0,.5);height:320px;max-width:760px;margin:0 auto;width:100%;transition:transform .4s,box-shadow .4s">
+      <div class="reply-featured hv19" style="grid-column:span 2;position:relative;background:#fff;border-radius:16px;padding:12px 12px 34px;transform:rotate(.4deg);box-shadow:0 24px 60px rgba(0,0,0,.5);height:320px;max-width:760px;margin:0 auto;width:100%;transition:transform .4s,box-shadow .4s">
         <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%) rotate(2deg);width:110px;height:26px;background:rgba(0,255,196,.4);backdrop-filter:blur(4px);border-radius:3px"></div>
-        <div style="height:calc(100% - 22px);overflow:hidden;display:flex;align-items:center;border-radius:10px"><img src="Screenshots/Attached_image8.png" alt="Cold email reply from a prospect" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;"></div>
+        <div class="rf-media" style="height:calc(100% - 22px);overflow:hidden;display:flex;align-items:center;border-radius:10px"><img src="Screenshots/Attached_image8.png" alt="Cold email reply from a prospect" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;"></div>
         <span style="position:absolute;bottom:9px;left:16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9a93a1">reply_006.png — verbatim</span>
       </div>
       <div class="hv20" style="position:relative;background:#fff;border-radius:16px;padding:10px 10px 30px;transform:rotate(1.2deg);box-shadow:0 20px 50px rgba(0,0,0,.45);transition:transform .4s,box-shadow .4s">
@@ -729,7 +756,7 @@ cal-modal-box{z-index:200}
     <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:48px;text-align:center;align-items:center">
       <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,4.5vw,62px);line-height:1.05;color:#fff;text-transform:uppercase;max-width:900px;text-wrap:balance">Why performance-based <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;text-transform:none;color:#00ffc4">changes everything.</span></h2>
     </div>
-    <div class="table-scroll"><div class="compare-grid" style="display:grid;grid-template-columns:150px repeat(3,1fr);gap:0;border:1px solid rgba(255,255,255,.1);border-radius:20px;overflow:hidden;font-size:14.5px;box-shadow:0 30px 80px rgba(0,0,0,.35)">
+    <div class="compare-hint" aria-hidden="true">swipe to compare &rarr;</div><div class="table-scroll"><div class="compare-grid" style="display:grid;grid-template-columns:150px repeat(3,1fr);gap:0;border:1px solid rgba(255,255,255,.1);border-radius:20px;overflow:hidden;font-size:14.5px;box-shadow:0 30px 80px rgba(0,0,0,.35)">
       <div style="padding:22px 20px;background:rgba(255,255,255,.02)"></div>
       <div style="padding:22px 20px;background:rgba(0,179,137,.16);border-left:1px solid rgba(0,255,196,.35);border-right:1px solid rgba(0,255,196,.35);display:flex;flex-direction:column;gap:7px">
         <span style="font-family:'Anton',sans-serif;font-size:19px;color:#00ffc4;text-transform:uppercase;letter-spacing:.02em;animation:glowPulse 4s ease-in-out infinite">Humain Demand</span>
@@ -1043,7 +1070,7 @@ cal-modal-box{z-index:200}
         <a class="hv59" href="#" style="color:#a49daa">LinkedIn</a>
       </div>
     </div>
-    <div style="font-family:'Anton',sans-serif;font-size:clamp(60px,9.5vw,140px);line-height:.95;text-transform:uppercase;text-align:center;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.06);white-space:nowrap;user-select:none;margin-bottom:-30px">Humain Demand</div>
+    <div class="footer-giant" style="font-family:'Anton',sans-serif;font-size:clamp(60px,9.5vw,140px);line-height:.95;text-transform:uppercase;text-align:center;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.06);white-space:nowrap;user-select:none;margin-bottom:-30px">Humain Demand</div>
   </div>
 </footer>
 
