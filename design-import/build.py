@@ -87,7 +87,9 @@ FAQS = [
 #        stripped below so the image drives the card height.
 
 SLOTS = {
-    "nav-logo":   ("logos/Humain Demand_A2 (2).jpg", "Humain Demand", "cover", False),
+    # hd-mark.png is the icon glyph cropped square out of the full lockup —
+# the lockup itself is illegible at the nav's 28px and duplicates the wordmark
+"nav-logo":   ("logos/hd-mark.png", "Humain Demand", "cover", False),
     "nav-hugo":   ("Profile Pic Hugo/Hugo (Me) profile Pic.jpeg", "Hugo van Baal", "cover", False),
 
     "arc-av-1": ("Profile Pic Hugo/1579801802849.jpeg", "Client", "cover", False),
@@ -383,8 +385,11 @@ def slot_repl(m):
                 'box-shadow:0 0 70px rgba(0,255,196,.3);opacity:.92"></div>')
 
     if sid in UNFILLED:
-        return ('<div class="slot-empty" style="%s;%s">'
-                '<span>%s</span></div>' % (base, extra, esc(placeholder)))
+        # no display:block here — it would beat .slot-empty's flex centring —
+        # and border-box keeps the rule's 24px padding inside the frame
+        return ('<div class="slot-empty" style="box-sizing:border-box;'
+                'width:100%%;height:100%%;border-radius:%s;%s">'
+                '<span>%s</span></div>' % (radius, extra, esc(placeholder)))
 
     if sid not in SLOTS:
         fail("no asset mapped for image-slot id=%r" % sid)
@@ -488,6 +493,7 @@ body = add_class(body, "width:480px;height:480px", "orbit", expect=1)
 body = add_class(body, "gap:26px;font-size:14px", "nav-actions", expect=1)
 body = add_class(body, "letter-spacing:.14em;text-transform:uppercase;color:#7d7484;border:1px solid", "nav-badge", expect=1)
 # leading ';' required — bare "order:1" also matches inside "border:1px"
+body = add_class(body, "min-height:320px", "cs-media", expect=3)
 body = add_class(body, "grid-column:span 2", "reply-featured", expect=2)
 body = add_class(body, "font-weight:700;font-size:16px;letter-spacing:-.01em", "nav-name", expect=1)
 body = add_class(body, "width:30px;height:30px;border-radius:50%;overflow:hidden;border:2px solid rgba(0,0,0,.4)", "nav-cta-avatar", expect=1)
@@ -554,9 +560,6 @@ img{max-width:100%}
 /* Cal.com renders its own modal; just keep it above the sticky nav */
 cal-modal-box{z-index:200}
 
-@media (max-width:1080px){
-  .cs-card,.phase-card{padding:36px !important;gap:32px !important}
-}
 #nav-burger{display:none;background:none;border:1px solid rgba(255,255,255,.15);border-radius:10px;
   color:#ece7ee;width:38px;height:38px;font-size:17px;cursor:pointer;
   align-items:center;justify-content:center;flex-shrink:0}
@@ -570,6 +573,11 @@ cal-modal-box{z-index:200}
 .compare-hint{display:none;font-family:'JetBrains Mono',monospace;font-size:10.5px;
   letter-spacing:.1em;text-transform:uppercase;color:#00ffc4;text-align:right;margin:0 0 10px}
 
+@media (max-width:1200px){
+  /* proof screenshots are height:auto; below ~1150px they render shorter than
+     the canvas's 320px floor and the white card shows blank fill under them */
+  .cs-media{min-height:0 !important}
+}
 @media (max-width:900px){
   #nav-burger{display:inline-flex}
   .compare-hint{display:block}

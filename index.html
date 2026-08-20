@@ -63,9 +63,6 @@ img{max-width:100%}
 /* Cal.com renders its own modal; just keep it above the sticky nav */
 cal-modal-box{z-index:200}
 
-@media (max-width:1080px){
-  .cs-card,.phase-card{padding:36px !important;gap:32px !important}
-}
 #nav-burger{display:none;background:none;border:1px solid rgba(255,255,255,.15);border-radius:10px;
   color:#ece7ee;width:38px;height:38px;font-size:17px;cursor:pointer;
   align-items:center;justify-content:center;flex-shrink:0}
@@ -79,6 +76,11 @@ cal-modal-box{z-index:200}
 .compare-hint{display:none;font-family:'JetBrains Mono',monospace;font-size:10.5px;
   letter-spacing:.1em;text-transform:uppercase;color:#00ffc4;text-align:right;margin:0 0 10px}
 
+@media (max-width:1200px){
+  /* proof screenshots are height:auto; below ~1150px they render shorter than
+     the canvas's 320px floor and the white card shows blank fill under them */
+  .cs-media{min-height:0 !important}
+}
 @media (max-width:900px){
   #nav-burger{display:inline-flex}
   .compare-hint{display:block}
@@ -194,7 +196,7 @@ cal-modal-box{z-index:200}
 <nav style="position:sticky;top:0;z-index:70;background:rgba(16,13,19,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)">
   <div style="max-width:1240px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px">
     <div style="display:flex;align-items:center;gap:10px">
-      <img src="logos/Humain Demand_A2 (2).jpg" alt="Humain Demand" style="display:block;width:100%;height:100%;border-radius:7px;object-fit:cover;width:28px;height:28px">
+      <img src="logos/hd-mark.png" alt="Humain Demand" style="display:block;width:100%;height:100%;border-radius:7px;object-fit:cover;width:28px;height:28px">
       <span class="nav-name" style="font-weight:700;font-size:16px;letter-spacing:-.01em;color:#fff">Humain Demand</span>
       <span class="nav-badge" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#7d7484;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:3px 10px;margin-left:6px">Outbound engineering</span>
     </div>
@@ -705,13 +707,13 @@ cal-modal-box{z-index:200}
           </div>
           <a class="hv36" href="https://cal.com/hugo-van-baal-agjtxz/30min?overlayCalendar=true" data-book="1" data-cal-namespace="30min" data-cal-link="hugo-van-baal-agjtxz/30min" data-cal-config='{"layout":"month_view","theme":"dark"}' style="display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(0,255,196,.4);color:#00ffc4;font-weight:700;font-size:14.5px;padding:11px 22px;border-radius:999px;width:fit-content;margin-top:8px;transition:background .3s">Book Your Demo ↗</a>
         </div>
-        <div class="hv37" style="position:relative;background:#fff;border-radius:16px;padding:10px;min-height:320px;transition:transform .4s;box-shadow:0 20px 50px rgba(0,0,0,.4)">
+        <div class="cs-media hv37" style="position:relative;background:#fff;border-radius:16px;padding:10px;min-height:320px;transition:transform .4s;box-shadow:0 20px 50px rgba(0,0,0,.4)">
           <span style="position:absolute;top:18px;right:18px;z-index:2;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#000;background:#00ffc4;border-radius:999px;padding:5px 12px">Proof</span>
           <img src="Proof Elements website/Untitled design (8).png" alt="National Positions results" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;">
         </div>
       </div>
       <div class="cs-card" style="position:relative;background:#17121b;border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center">
-        <div class="cs-media-first hv38" style="position:relative;background:#fff;border-radius:16px;padding:10px;min-height:320px;order:1;transition:transform .4s;box-shadow:0 20px 50px rgba(0,0,0,.4)">
+        <div class="cs-media-first cs-media hv38" style="position:relative;background:#fff;border-radius:16px;padding:10px;min-height:320px;order:1;transition:transform .4s;box-shadow:0 20px 50px rgba(0,0,0,.4)">
           <span style="position:absolute;top:18px;right:18px;z-index:2;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#000;background:#00ffc4;border-radius:999px;padding:5px 12px">Proof</span>
           <img src="Proof Elements website/10.png" alt="Avalaunch Media results" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;">
         </div>
@@ -737,7 +739,7 @@ cal-modal-box{z-index:200}
           </div>
           <a class="hv40" href="https://cal.com/hugo-van-baal-agjtxz/30min?overlayCalendar=true" data-book="1" data-cal-namespace="30min" data-cal-link="hugo-van-baal-agjtxz/30min" data-cal-config='{"layout":"month_view","theme":"dark"}' style="display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(0,255,196,.4);color:#00ffc4;font-weight:700;font-size:14.5px;padding:11px 22px;border-radius:999px;width:fit-content;margin-top:8px;transition:background .3s">Book Your Demo ↗</a>
         </div>
-        <div class="hv41" style="position:relative;background:#fff;border-radius:16px;padding:10px;min-height:320px;transition:transform .4s;box-shadow:0 20px 50px rgba(0,0,0,.4)">
+        <div class="cs-media hv41" style="position:relative;background:#fff;border-radius:16px;padding:10px;min-height:320px;transition:transform .4s;box-shadow:0 20px 50px rgba(0,0,0,.4)">
           <span style="position:absolute;top:18px;right:18px;z-index:2;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#000;background:#00ffc4;border-radius:999px;padding:5px 12px">Proof</span>
           <img src="Proof Elements website/8.png" alt="IntellaWaste results" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;">
         </div>
