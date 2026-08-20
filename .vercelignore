@@ -1,0 +1,8 @@
+# design-canvas sources + build script (not needed at runtime)
+design-import/
+# previous design, kept locally as a rollback reference
+index-previous-design.html
+index-old-vs-new-saved.html
+index.html.backup
+generated-page.html
+reference case study section

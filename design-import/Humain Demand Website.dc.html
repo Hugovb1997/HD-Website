@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
 <title>Humain Demand — Outbound Engineering</title>
-<meta name="description" content="Performance-based outbound for B2B marketing agencies doing $100K+/month. We book you 12-30 qualified meetings per month - you only pay when we do.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Humain Demand — Outbound Engineering">
-<meta property="og:description" content="Performance-based outbound for B2B marketing agencies doing $100K+/month. We book you 12-30 qualified meetings per month - you only pay when we do.">
-<meta property="og:image" content="logos/Humain Demand_A2 (2).jpg">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="logos/Humain Demand_A2 (2).jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -35,153 +33,28 @@ a:hover{color:#7dffe2;}
 @keyframes borderSpin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;}}
 </style>
-<style>
-/* NO global box-sizing reset here on purpose. The canvas was authored against
-   the browser default (content-box) — it sets box-sizing:border-box inline on
-   the few elements that want it — so forcing border-box globally silently
-   resizes every fixed-size element that also has padding, and the page stops
-   matching the design. Keep this file additive; never restyle the canvas. */
+<script src="./image-slot.js"></script>
+</helmet>
 
-/* Safety net for the oversized decorative type. Must be `clip`, NOT `hidden`:
-   overflow-x:hidden computes overflow-y to auto, which makes body a scroll
-   container and silently kills position:sticky on the phase cards. */
-body{overflow-x:clip}
-img{max-width:100%}
-.skip-link{position:absolute;left:-9999px;top:0;z-index:200;background:#00ffc4;color:#000;
-  padding:12px 20px;border-radius:0 0 10px 0;font-weight:700}
-.skip-link:focus{left:0;color:#000}
-:focus-visible{outline:2px solid #00ffc4;outline-offset:3px}
-
-.slot-empty{display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;
-  background:repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0 12px,transparent 12px 24px),#0b090d;
-  border:1px dashed rgba(0,255,196,.35);color:#7d7484;font-family:'JetBrains Mono',monospace;
-  font-size:12px;letter-spacing:.08em;text-transform:uppercase}
-
-.faq-q{width:100%}
-.faq-panel[hidden]{display:none}
-
-/* Cal.com renders its own modal; just keep it above the sticky nav */
-cal-modal-box{z-index:200}
-
-@media (max-width:1080px){
-  .cs-card,.phase-card{padding:36px !important;gap:32px !important}
-}
-#nav-burger{display:none;background:none;border:1px solid rgba(255,255,255,.15);border-radius:10px;
-  color:#ece7ee;width:38px;height:38px;font-size:17px;cursor:pointer;
-  align-items:center;justify-content:center;flex-shrink:0}
-#nav-burger:hover{border-color:rgba(0,255,196,.4);color:#00ffc4}
-#mobile-nav{position:absolute;top:100%;left:0;right:0;background:rgba(16,13,19,.97);
-  backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.1);
-  padding:10px 24px 16px;display:flex;flex-direction:column;gap:4px}
-#mobile-nav[hidden]{display:none}
-#mobile-nav .nav-link{display:block !important;padding:10px 0;font-size:15px;font-weight:500}
-
-@media (max-width:900px){
-  #nav-burger{display:inline-flex}
-  .phase-sticky{position:relative !important;top:auto !important;margin-bottom:24px !important}
-  .phase-card,.cs-card{grid-template-columns:minmax(0,1fr) !important;min-height:0 !important}
-  .cs-media-first{order:2 !important}
-  .cs-text-second{order:1 !important}
-  .reply-grid{grid-template-columns:minmax(0,1fr) !important}
-  .reply-grid>*{grid-column:auto !important;transform:none !important}
-  .stats-grid{grid-template-columns:minmax(0,1fr) !important;gap:18px !important}
-  .stat-divider{display:none !important}
-  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:20px}
-  .compare-grid{min-width:720px}
-  .nav-link,.nav-badge{display:none !important}
-}
-@media (max-width:640px){
-  section,header{padding-left:18px !important;padding-right:18px !important}
-  .phase-card,.cs-card{padding:26px !important}
-  .orbit{transform:scale(.68);margin:-76px 0}
-  .nav-actions{gap:12px !important}
-  /* the long CTA label needs room to breathe at 390px */
-  .cta-primary{font-size:15px !important;padding:14px 20px !important;text-align:center}
-  h1{font-size:clamp(34px,9vw,46px) !important}
-}
-.hv1:hover{color:#fff !important}
-.hv2:hover{color:#fff !important}
-.hv3:hover{color:#fff !important}
-.hv4:hover{background:#7dffe2 !important;color:#000 !important}
-.hv5:hover{transform:translateY(-26px) scale(1.1) !important}
-.hv6:hover{transform:translateY(-18px) scale(1.1) !important}
-.hv7:hover{transform:scale(1.1) !important}
-.hv8:hover{transform:translateY(-18px) scale(1.1) !important}
-.hv9:hover{transform:translateY(-26px) scale(1.1) !important}
-.hv10:hover{background:#7dffe2 !important;transform:translateY(-3px) !important;box-shadow:0 0 70px rgba(0,255,196,.5) !important;color:#000 !important}
-.hv11:hover{transform:translateY(-3px) !important}
-.hv12:hover{transform:translateY(-3px) !important}
-.hv13:hover{transform:translateY(-3px) !important}
-.hv14:hover{transform:rotate(0deg) scale(1.02) !important;box-shadow:0 30px 80px rgba(0,255,196,.15) !important}
-.hv15:hover{transform:rotate(0deg) scale(1.03) !important;box-shadow:0 26px 70px rgba(0,255,196,.15) !important}
-.hv16:hover{transform:rotate(0deg) translateY(8px) scale(1.03) !important;box-shadow:0 26px 70px rgba(0,255,196,.15) !important}
-.hv17:hover{transform:rotate(0deg) scale(1.03) !important;box-shadow:0 26px 70px rgba(0,255,196,.15) !important}
-.hv18:hover{transform:rotate(0deg) translateY(4px) scale(1.03) !important;box-shadow:0 26px 70px rgba(0,255,196,.15) !important}
-.hv19:hover{transform:rotate(0deg) scale(1.02) !important;box-shadow:0 30px 80px rgba(0,255,196,.15) !important}
-.hv20:hover{transform:rotate(0deg) scale(1.03) !important;box-shadow:0 26px 70px rgba(0,255,196,.15) !important}
-.hv21:hover{transform:rotate(0deg) translateY(6px) scale(1.03) !important;box-shadow:0 26px 70px rgba(0,255,196,.15) !important}
-.hv22:hover{border-color:rgba(0,255,196,.3) !important}
-.hv23:hover{border-color:rgba(0,255,196,.3) !important}
-.hv24:hover{border-color:rgba(0,255,196,.3) !important}
-.hv25:hover{border-color:rgba(0,255,196,.3) !important}
-.hv26:hover{border-color:rgba(0,255,196,.3) !important}
-.hv27:hover{background:#7dffe2 !important;transform:translateY(-3px) !important;box-shadow:0 0 70px rgba(0,255,196,.5) !important;color:#000 !important}
-.hv28:hover{transform:translateY(-6px) !important;border-color:rgba(0,255,196,.35) !important;box-shadow:0 20px 50px rgba(0,0,0,.4) !important}
-.hv29:hover{transform:translateY(-6px) !important;border-color:rgba(0,255,196,.35) !important;box-shadow:0 20px 50px rgba(0,0,0,.4) !important}
-.hv30:hover{transform:translateY(-6px) !important;border-color:rgba(0,255,196,.35) !important;box-shadow:0 20px 50px rgba(0,0,0,.4) !important}
-.hv31:hover{transform:translateY(-6px) !important;border-color:rgba(0,255,196,.35) !important;box-shadow:0 20px 50px rgba(0,0,0,.4) !important}
-.hv32:hover{transform:translateY(-6px) !important;border-color:rgba(0,255,196,.35) !important;box-shadow:0 20px 50px rgba(0,0,0,.4) !important}
-.hv33:hover{transform:translateY(-6px) !important;border-color:rgba(0,255,196,.35) !important}
-.hv34:hover{transform:translateY(-6px) !important;border-color:rgba(0,255,196,.35) !important}
-.hv35:hover{transform:translateY(-6px) !important;border-color:rgba(0,255,196,.35) !important}
-.hv36:hover{background:rgba(0,255,196,.1) !important;color:#00ffc4 !important}
-.hv37:hover{transform:scale(1.02) rotate(.4deg) !important}
-.hv38:hover{transform:scale(1.02) rotate(-.4deg) !important}
-.hv39:hover{background:rgba(0,255,196,.1) !important;color:#00ffc4 !important}
-.hv40:hover{background:rgba(0,255,196,.1) !important;color:#00ffc4 !important}
-.hv41:hover{transform:scale(1.02) rotate(.4deg) !important}
-.hv42:hover{transform:translateY(-6px) !important;border-color:rgba(0,255,196,.4) !important;box-shadow:0 30px 70px rgba(0,0,0,.45) !important}
-.hv43:hover{transform:translateY(-6px) !important;border-color:rgba(0,255,196,.4) !important;box-shadow:0 30px 70px rgba(0,0,0,.45) !important}
-.hv44:hover{transform:rotate(0deg) translateY(-6px) !important;border-color:rgba(0,255,196,.35) !important}
-.hv45:hover{transform:rotate(0deg) translateY(-6px) !important;border-color:rgba(0,255,196,.35) !important}
-.hv46:hover{transform:rotate(0deg) translateY(-6px) !important;border-color:rgba(0,255,196,.35) !important}
-.hv47:hover{transform:rotate(0deg) translateY(-6px) !important;border-color:rgba(255,92,92,.5) !important}
-.hv48:hover{transform:rotate(0deg) translateY(-6px) !important;border-color:rgba(0,255,196,.35) !important}
-.hv49:hover{transform:rotate(0deg) translateY(-6px) !important;box-shadow:0 0 40px rgba(0,255,196,.18) !important}
-.hv50:hover{border-color:rgba(0,255,196,.3) !important}
-.hv51:hover{border-color:rgba(0,255,196,.3) !important}
-.hv52:hover{border-color:rgba(0,255,196,.3) !important}
-.hv53:hover{border-color:rgba(0,255,196,.3) !important}
-.hv54:hover{border-color:rgba(0,255,196,.3) !important}
-.hv55:hover{border-color:rgba(0,255,196,.3) !important}
-.hv56:hover{border-color:rgba(0,255,196,.3) !important}
-.hv57:hover{background:#7dffe2 !important;transform:translateY(-3px) !important;box-shadow:0 0 90px rgba(0,255,196,.55) !important;color:#000 !important}
-.hv58:hover{color:#fff !important}
-.hv59:hover{color:#fff !important}
-.hv60:hover{color:#fff !important}
-</style>
-</head>
-<body>
-<a class="skip-link" href="#main-content">Skip to content</a>
 <!-- NAV -->
 <nav style="position:sticky;top:0;z-index:70;background:rgba(16,13,19,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)">
   <div style="max-width:1240px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px">
     <div style="display:flex;align-items:center;gap:10px">
-      <img src="logos/Humain Demand_A2 (2).jpg" alt="Humain Demand" style="display:block;width:100%;height:100%;border-radius:7px;object-fit:cover;width:28px;height:28px">
+      <image-slot id="nav-logo" shape="rounded" radius="7" style="width:28px;height:28px" placeholder="Logo"></image-slot>
       <span style="font-weight:700;font-size:16px;letter-spacing:-.01em;color:#fff">Humain Demand</span>
-      <span class="nav-badge" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#7d7484;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:3px 10px;margin-left:6px">Outbound engineering</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#7d7484;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:3px 10px;margin-left:6px">Outbound engineering</span>
     </div>
-    <div class="nav-actions" style="display:flex;align-items:center;gap:26px;font-size:14px;font-weight:500">
-      <a class="nav-link hv1" href="#methodology" style="color:#a49daa">Methodology</a>
-      <a class="nav-link hv2" href="#case-studies" style="color:#a49daa">Case Studies</a>
-      <a class="nav-link hv3" href="#faq" style="color:#a49daa">FAQ</a>
-      <a class="hv4" href="https://cal.com/hugo-van-baal-agjtxz/30min?overlayCalendar=true" data-book="1" data-cal-namespace="30min" data-cal-link="hugo-van-baal-agjtxz/30min" data-cal-config='{"layout":"month_view","theme":"dark"}' style="display:inline-flex;align-items:center;gap:10px;background:#00ffc4;color:#000;font-weight:700;padding:6px 6px 6px 18px;border-radius:999px;font-size:13.5px;position:relative;overflow:hidden"><span style="position:absolute;top:0;bottom:0;left:0;width:45%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.55),transparent);animation:shimmer 3.2s ease-in-out infinite"></span><span style="position:relative">Book Your Demo</span><span style="position:relative;width:30px;height:30px;border-radius:50%;overflow:hidden;border:2px solid rgba(0,0,0,.4)"><img src="Profile Pic Hugo/Hugo (Me) profile Pic.jpeg" alt="Hugo van Baal" style="display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;"></span></a>
+    <div style="display:flex;align-items:center;gap:26px;font-size:14px;font-weight:500">
+      <a href="#methodology" style="color:#a49daa" style-hover="color:#fff">Methodology</a>
+      <a href="#case-studies" style="color:#a49daa" style-hover="color:#fff">Case Studies</a>
+      <a href="#faq" style="color:#a49daa" style-hover="color:#fff">FAQ</a>
+      <a href="#apply" style="display:inline-flex;align-items:center;gap:10px;background:#00ffc4;color:#000;font-weight:700;padding:6px 6px 6px 18px;border-radius:999px;font-size:13.5px;position:relative;overflow:hidden" style-hover="background:#7dffe2;color:#000"><span style="position:absolute;top:0;bottom:0;left:0;width:45%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.55),transparent);animation:shimmer 3.2s ease-in-out infinite"></span><span style="position:relative">Book Your Demo</span><span style="position:relative;width:30px;height:30px;border-radius:50%;overflow:hidden;border:2px solid rgba(0,0,0,.4)"><image-slot id="nav-hugo" shape="circle" placeholder="Hugo"></image-slot></span></a>
     </div>
   </div>
 </nav>
 
 <!-- HERO -->
-<header id="main-content" style="position:relative;overflow:hidden;padding:100px 24px 0;text-align:center;background:radial-gradient(45% 55% at 12% 0%, rgba(90,20,60,.55) 0%, rgba(16,13,19,0) 70%), radial-gradient(50% 60% at 92% 18%, rgba(70,30,110,.45) 0%, rgba(16,13,19,0) 70%), radial-gradient(40% 40% at 55% 90%, rgba(0,179,137,.1) 0%, rgba(16,13,19,0) 70%)">
+<header style="position:relative;overflow:hidden;padding:100px 24px 0;text-align:center;background:radial-gradient(45% 55% at 12% 0%, rgba(90,20,60,.55) 0%, rgba(16,13,19,0) 70%), radial-gradient(50% 60% at 92% 18%, rgba(70,30,110,.45) 0%, rgba(16,13,19,0) 70%), radial-gradient(40% 40% at 55% 90%, rgba(0,179,137,.1) 0%, rgba(16,13,19,0) 70%)">
   <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);background-size:30px 30px;mask-image:radial-gradient(60% 55% at 50% 30%, #000 0%, transparent 100%);pointer-events:none"></div>
   <div style="position:absolute;top:-30px;left:50%;transform:translateX(-50%);font-family:'Anton',sans-serif;font-size:clamp(140px,20vw,300px);line-height:1;text-transform:uppercase;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.05);white-space:nowrap;pointer-events:none;user-select:none">Outbound</div>
   <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:32px;position:relative">
@@ -194,37 +67,54 @@ cal-modal-box{z-index:200}
     <div style="display:flex;flex-direction:column;align-items:center;gap:14px;animation:rise .9s cubic-bezier(.22,.7,.25,1) .3s both">
       <span style="font-size:22px;letter-spacing:4px;color:#ffd700;text-shadow:0 0 14px rgba(255,215,0,.55)">★★★★★</span>
       <div style="display:flex;align-items:flex-end;justify-content:center">
-        <div class="hv5" style="width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid #100d13;box-shadow:0 5px 10px rgba(0,0,0,.5);transform:translateY(-16px);margin-right:-14px;z-index:1;transition:transform .3s"><img src="Profile Pic Hugo/1579801802849.jpeg" alt="Client" style="display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;"></div>
-        <div class="hv6" style="width:48px;height:48px;border-radius:50%;overflow:hidden;border:2px solid #100d13;box-shadow:0 5px 10px rgba(0,0,0,.5);transform:translateY(-8px);margin-right:-14px;z-index:2;transition:transform .3s"><img src="Testimonials/Ajinder Banns.jpeg" alt="Ajinder Banns" style="display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;"></div>
-        <div class="hv7" style="width:56px;height:56px;border-radius:50%;overflow:hidden;border:2px solid #00ffc4;box-shadow:0 0 18px rgba(0,255,196,.4);z-index:3;transition:transform .3s"><img src="Profile Pic Hugo/Allan Miller PF.jpeg" alt="Allan Miller" style="display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;"></div>
-        <div class="hv8" style="width:48px;height:48px;border-radius:50%;overflow:hidden;border:2px solid #100d13;box-shadow:0 5px 10px rgba(0,0,0,.5);transform:translateY(-8px);margin-left:-14px;z-index:2;transition:transform .3s"><img src="Testimonials/Theo Gors.jpeg" alt="Theo Görs" style="display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;"></div>
-        <div class="hv9" style="width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid #100d13;box-shadow:0 5px 10px rgba(0,0,0,.5);transform:translateY(-16px);margin-left:-14px;z-index:1;transition:transform .3s"><img src="Profile Pic Hugo/Tom Zanoli.jpeg" alt="Tom Zanoli" style="display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;"></div>
+        <div style="width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid #100d13;box-shadow:0 5px 10px rgba(0,0,0,.5);transform:translateY(-16px);margin-right:-14px;z-index:1;transition:transform .3s" style-hover="transform:translateY(-26px) scale(1.1)"><image-slot id="arc-av-1" shape="circle" placeholder="Client"></image-slot></div>
+        <div style="width:48px;height:48px;border-radius:50%;overflow:hidden;border:2px solid #100d13;box-shadow:0 5px 10px rgba(0,0,0,.5);transform:translateY(-8px);margin-right:-14px;z-index:2;transition:transform .3s" style-hover="transform:translateY(-18px) scale(1.1)"><image-slot id="arc-av-2" shape="circle" placeholder="Client"></image-slot></div>
+        <div style="width:56px;height:56px;border-radius:50%;overflow:hidden;border:2px solid #00ffc4;box-shadow:0 0 18px rgba(0,255,196,.4);z-index:3;transition:transform .3s" style-hover="transform:scale(1.1)"><image-slot id="arc-av-3" shape="circle" placeholder="Client"></image-slot></div>
+        <div style="width:48px;height:48px;border-radius:50%;overflow:hidden;border:2px solid #100d13;box-shadow:0 5px 10px rgba(0,0,0,.5);transform:translateY(-8px);margin-left:-14px;z-index:2;transition:transform .3s" style-hover="transform:translateY(-18px) scale(1.1)"><image-slot id="arc-av-4" shape="circle" placeholder="Client"></image-slot></div>
+        <div style="width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid #100d13;box-shadow:0 5px 10px rgba(0,0,0,.5);transform:translateY(-16px);margin-left:-14px;z-index:1;transition:transform .3s" style-hover="transform:translateY(-26px) scale(1.1)"><image-slot id="arc-av-5" shape="circle" placeholder="Client"></image-slot></div>
       </div>
       <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#7d7484">Trusted by agency operators worldwide</span>
     </div>
-    
+    <div style="max-width:960px;width:100%;animation:rise .9s cubic-bezier(.22,.7,.25,1) .4s both">
+      <div style="position:relative;border:1px solid rgba(255,255,255,.12);border-radius:18px;overflow:hidden;aspect-ratio:16/9;background:#000;box-shadow:0 40px 100px rgba(0,0,0,.6), 0 0 80px rgba(0,255,196,.06)">
+        <image-slot id="vsl-thumb" shape="rect" placeholder="Drop your masterclass / VSL thumbnail here"></image-slot>
+        <div style="position:absolute;top:14px;left:14px;width:26px;height:26px;border-top:2px solid rgba(0,255,196,.6);border-left:2px solid rgba(0,255,196,.6);border-radius:4px 0 0 0;pointer-events:none"></div>
+        <div style="position:absolute;top:14px;right:14px;width:26px;height:26px;border-top:2px solid rgba(0,255,196,.6);border-right:2px solid rgba(0,255,196,.6);border-radius:0 4px 0 0;pointer-events:none"></div>
+        <div style="position:absolute;bottom:14px;left:14px;width:26px;height:26px;border-bottom:2px solid rgba(0,255,196,.6);border-left:2px solid rgba(0,255,196,.6);border-radius:0 0 0 4px;pointer-events:none"></div>
+        <div style="position:absolute;bottom:14px;right:14px;width:26px;height:26px;border-bottom:2px solid rgba(0,255,196,.6);border-right:2px solid rgba(0,255,196,.6);border-radius:0 0 4px 0;pointer-events:none"></div>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none">
+          <div style="position:relative;width:88px;height:88px">
+            <div style="position:absolute;inset:0;border-radius:50%;border:1px solid rgba(0,255,196,.5);animation:pulseRing 2.6s ease-out infinite"></div>
+            <div style="position:absolute;inset:0;border-radius:50%;border:1px solid rgba(0,255,196,.35);animation:pulseRing 2.6s ease-out 1.3s infinite"></div>
+            <div style="position:absolute;inset:0;border-radius:50%;background:rgba(0,255,196,.12);border:1px solid rgba(0,255,196,.45);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;font-size:30px;color:#00ffc4;box-shadow:0 0 60px rgba(0,255,196,.3)">▶</div>
+          </div>
+        </div>
+        <span style="position:absolute;left:18px;top:16px;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:7px 14px;display:inline-flex;align-items:center;gap:8px"><span style="width:7px;height:7px;border-radius:50%;background:#ff5c5c;animation:blink 1.4s infinite"></span> Live demo</span>
+        <span style="position:absolute;left:18px;bottom:16px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#00ffc4;background:rgba(0,0,0,.65);border:1px solid rgba(0,255,196,.3);border-radius:999px;padding:7px 14px">See how we book 50+ meetings/mo</span>
+      </div>
+    </div>
     <div id="apply" style="display:flex;flex-direction:column;align-items:center;gap:18px;padding-bottom:72px;animation:rise .9s cubic-bezier(.22,.7,.25,1) .5s both">
-      <a class="cta-primary hv10" href="https://cal.com/hugo-van-baal-agjtxz/30min?overlayCalendar=true" data-book="1" data-cal-namespace="30min" data-cal-link="hugo-van-baal-agjtxz/30min" data-cal-config='{"layout":"month_view","theme":"dark"}' style="display:inline-flex;align-items:center;gap:12px;background:#00ffc4;color:#000;font-weight:700;font-size:17px;padding:16px 30px;border-radius:999px;box-shadow:0 0 40px rgba(0,255,196,.3);position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s"><span style="position:absolute;top:0;bottom:0;left:0;width:45%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.6),transparent);animation:shimmer 2.6s ease-in-out infinite"></span><span style="position:relative">Apply For A Performance Campaign</span> <span style="position:relative;background:#000;color:#00ffc4;border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:15px">→</span></a>
+      <a href="#faq" style="display:inline-flex;align-items:center;gap:12px;background:#00ffc4;color:#000;font-weight:700;font-size:17px;padding:16px 30px;border-radius:999px;box-shadow:0 0 40px rgba(0,255,196,.3);position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s" style-hover="background:#7dffe2;transform:translateY(-3px);box-shadow:0 0 70px rgba(0,255,196,.5);color:#000"><span style="position:absolute;top:0;bottom:0;left:0;width:45%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.6),transparent);animation:shimmer 2.6s ease-in-out infinite"></span><span style="position:relative">Apply For A Performance Campaign</span> <span style="position:relative;background:#000;color:#00ffc4;border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:15px">→</span></a>
       <p style="margin:0;font-size:14px;color:#c2bbc8;line-height:1.6"><span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#00ffc4;border:1px solid rgba(0,255,196,.35);border-radius:5px;padding:2px 8px;margin-right:10px">No risk</span>You define what qualified means. We run the campaigns. You only pay for meetings that show up.</p>
-      <span style="display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#a49daa"><span style="width:8px;height:8px;border-radius:50%;background:#ff5c5c;animation:blink 1.4s infinite"></span> We only onboard 2 new agencies per month</span>
+      <span style="display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#a49daa"><span style="width:8px;height:8px;border-radius:50%;background:#ff5c5c;animation:blink 1.4s infinite"></span> We only onboard {{ spotsLeft }} new agencies per month</span>
     </div>
   </div>
 </header>
 
 <!-- CREDIBILITY STATS -->
 <section style="border-top:1px solid rgba(255,255,255,.07);background:#0b090d;padding:34px 24px">
-  <div class="stats-grid" style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:28px;align-items:center">
-    <div class="hv11" style="display:flex;align-items:baseline;gap:12px;justify-content:center;transition:transform .3s">
+  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:28px;align-items:center">
+    <div style="display:flex;align-items:baseline;gap:12px;justify-content:center;transition:transform .3s" style-hover="transform:translateY(-3px)">
       <span style="font-family:'Anton',sans-serif;font-size:36px;line-height:1;background:linear-gradient(90deg,#00ffc4,#7dffe2,#00ffc4);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradientMove 6s linear infinite">$20M+</span>
       <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#a49daa">in pipeline generated</span>
     </div>
-    <div class="stat-divider" style="width:1px;height:34px;background:rgba(255,255,255,.1)"></div>
-    <div class="hv12" style="display:flex;align-items:baseline;gap:12px;justify-content:center;transition:transform .3s">
+    <div style="width:1px;height:34px;background:rgba(255,255,255,.1)"></div>
+    <div style="display:flex;align-items:baseline;gap:12px;justify-content:center;transition:transform .3s" style-hover="transform:translateY(-3px)">
       <span style="font-family:'Anton',sans-serif;font-size:36px;line-height:1;color:#fff">1 / 183</span>
       <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#a49daa">lead per contacts avg</span>
     </div>
-    <div class="stat-divider" style="width:1px;height:34px;background:rgba(255,255,255,.1)"></div>
-    <div class="hv13" style="display:flex;align-items:baseline;gap:12px;justify-content:center;transition:transform .3s">
+    <div style="width:1px;height:34px;background:rgba(255,255,255,.1)"></div>
+    <div style="display:flex;align-items:baseline;gap:12px;justify-content:center;transition:transform .3s" style-hover="transform:translateY(-3px)">
       <span style="font-family:'Anton',sans-serif;font-size:36px;line-height:1;color:#fff">5 / 5</span>
       <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#a49daa">rated growth partner</span>
     </div>
@@ -232,18 +122,18 @@ cal-modal-box{z-index:200}
 </section>
 
 <!-- MARQUEE -->
-
+<sc-if value="{{ showMarquee }}" hint-placeholder-val="{{ true }}">
   <div style="overflow:hidden;background:#00ffc4;padding:12px 0;border-top:1px solid rgba(0,0,0,.15)">
     <div style="display:flex;width:max-content;animation:marquee 28s linear infinite">
       <div style="display:flex;gap:44px;padding-right:44px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#000;white-space:nowrap;font-weight:600">
-        <span>Pay per qualified meeting</span><span>✦</span><span>No retainers</span><span>✦</span><span>12–30 meetings/mo</span><span>✦</span><span>You define qualified</span><span>✦</span><span>We only onboard 2 agencies/mo</span><span>✦</span>
+        <span>Pay per qualified meeting</span><span>✦</span><span>No retainers</span><span>✦</span><span>12–30 meetings/mo</span><span>✦</span><span>You define qualified</span><span>✦</span><span>We only onboard {{ spotsLeft }} agencies/mo</span><span>✦</span>
       </div>
       <div style="display:flex;gap:44px;padding-right:44px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#000;white-space:nowrap;font-weight:600">
-        <span>Pay per qualified meeting</span><span>✦</span><span>No retainers</span><span>✦</span><span>12–30 meetings/mo</span><span>✦</span><span>You define qualified</span><span>✦</span><span>We only onboard 2 agencies/mo</span><span>✦</span>
+        <span>Pay per qualified meeting</span><span>✦</span><span>No retainers</span><span>✦</span><span>12–30 meetings/mo</span><span>✦</span><span>You define qualified</span><span>✦</span><span>We only onboard {{ spotsLeft }} agencies/mo</span><span>✦</span>
       </div>
     </div>
   </div>
-
+</sc-if>
 
 <!-- REPLY SCREENSHOTS -->
 <section style="padding:110px 24px;position:relative;background:radial-gradient(40% 35% at 80% 20%, rgba(90,20,60,.35) 0%, rgba(16,13,19,0) 70%)">
@@ -255,45 +145,45 @@ cal-modal-box{z-index:200}
     <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:64px;text-align:center;align-items:center">
       <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,4.5vw,62px);line-height:1.05;color:#fff;text-transform:uppercase;max-width:900px;text-wrap:balance">How prospects respond when cold outreach <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;text-transform:none;color:#00ffc4">actually works.</span></h2>
     </div>
-    <div class="reply-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:1000px;margin:0 auto">
-      <div class="hv14" style="grid-column:span 2;position:relative;background:#fff;border-radius:16px;padding:12px 12px 34px;transform:rotate(-.5deg);box-shadow:0 24px 60px rgba(0,0,0,.5);height:320px;max-width:760px;margin:0 auto;width:100%;transition:transform .4s,box-shadow .4s">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:1000px;margin:0 auto">
+      <div style="grid-column:span 2;position:relative;background:#fff;border-radius:16px;padding:12px 12px 34px;transform:rotate(-.5deg);box-shadow:0 24px 60px rgba(0,0,0,.5);height:320px;max-width:760px;margin:0 auto;width:100%;transition:transform .4s,box-shadow .4s" style-hover="transform:rotate(0deg) scale(1.02);box-shadow:0 30px 80px rgba(0,255,196,.15)">
         <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%) rotate(-2deg);width:110px;height:26px;background:rgba(0,255,196,.4);backdrop-filter:blur(4px);border-radius:3px"></div>
-        <div style="height:calc(100% - 22px);overflow:hidden;display:flex;align-items:center;border-radius:10px"><img src="Screenshots/Attached_image7.png" alt="Cold email reply from a prospect" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;"></div>
+        <div style="height:calc(100% - 22px)"><image-slot id="reply-7" shape="rounded" radius="10" placeholder="Featured reply screenshot"></image-slot></div>
         <span style="position:absolute;bottom:9px;left:16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9a93a1">reply_001.png — verbatim</span>
       </div>
-      <div class="hv15" style="position:relative;background:#fff;border-radius:16px;padding:10px 10px 30px;transform:rotate(.8deg);box-shadow:0 20px 50px rgba(0,0,0,.45);transition:transform .4s,box-shadow .4s">
+      <div style="position:relative;background:#fff;border-radius:16px;padding:10px 10px 30px;transform:rotate(.8deg);box-shadow:0 20px 50px rgba(0,0,0,.45);height:250px;transition:transform .4s,box-shadow .4s" style-hover="transform:rotate(0deg) scale(1.03);box-shadow:0 26px 70px rgba(0,255,196,.15)">
         <div style="position:absolute;top:-10px;left:24px;transform:rotate(3deg);width:80px;height:22px;background:rgba(0,255,196,.4);backdrop-filter:blur(4px);border-radius:3px"></div>
-        <div><img src="Screenshots/Attached_image.png" alt="Cold email reply from a prospect" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;"></div>
+        <div style="height:calc(100% - 20px)"><image-slot id="reply-1" shape="rounded" radius="10" placeholder="Reply screenshot"></image-slot></div>
         <span style="position:absolute;bottom:8px;left:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9a93a1">reply_002.png</span>
       </div>
-      <div class="hv16" style="position:relative;background:#fff;border-radius:16px;padding:10px 10px 30px;transform:rotate(-1deg) translateY(14px);box-shadow:0 20px 50px rgba(0,0,0,.45);transition:transform .4s,box-shadow .4s">
+      <div style="position:relative;background:#fff;border-radius:16px;padding:10px 10px 30px;transform:rotate(-1deg) translateY(14px);box-shadow:0 20px 50px rgba(0,0,0,.45);height:250px;transition:transform .4s,box-shadow .4s" style-hover="transform:rotate(0deg) translateY(8px) scale(1.03);box-shadow:0 26px 70px rgba(0,255,196,.15)">
         <div style="position:absolute;top:-10px;right:24px;transform:rotate(-4deg);width:80px;height:22px;background:rgba(0,255,196,.4);backdrop-filter:blur(4px);border-radius:3px"></div>
-        <div><img src="Screenshots/Attached_image2.png" alt="Cold email reply from a prospect" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;"></div>
+        <div style="height:calc(100% - 20px)"><image-slot id="reply-2" shape="rounded" radius="10" placeholder="Reply screenshot"></image-slot></div>
         <span style="position:absolute;bottom:8px;left:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9a93a1">reply_003.png</span>
       </div>
-      <div class="hv17" style="position:relative;background:#fff;border-radius:16px;padding:10px 10px 30px;transform:rotate(-.6deg);box-shadow:0 20px 50px rgba(0,0,0,.45);transition:transform .4s,box-shadow .4s">
+      <div style="position:relative;background:#fff;border-radius:16px;padding:10px 10px 30px;transform:rotate(-.6deg);box-shadow:0 20px 50px rgba(0,0,0,.45);height:250px;transition:transform .4s,box-shadow .4s" style-hover="transform:rotate(0deg) scale(1.03);box-shadow:0 26px 70px rgba(0,255,196,.15)">
         <div style="position:absolute;top:-10px;left:32px;transform:rotate(-3deg);width:80px;height:22px;background:rgba(0,255,196,.4);backdrop-filter:blur(4px);border-radius:3px"></div>
-        <div><img src="Screenshots/Attached_image3.png" alt="Cold email reply from a prospect" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;"></div>
+        <div style="height:calc(100% - 20px)"><image-slot id="reply-3" shape="rounded" radius="10" placeholder="Reply screenshot"></image-slot></div>
         <span style="position:absolute;bottom:8px;left:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9a93a1">reply_004.png</span>
       </div>
-      <div class="hv18" style="position:relative;background:#fff;border-radius:16px;padding:10px 10px 30px;transform:rotate(.5deg) translateY(10px);box-shadow:0 20px 50px rgba(0,0,0,.45);transition:transform .4s,box-shadow .4s">
+      <div style="position:relative;background:#fff;border-radius:16px;padding:10px 10px 30px;transform:rotate(.5deg) translateY(10px);box-shadow:0 20px 50px rgba(0,0,0,.45);height:250px;transition:transform .4s,box-shadow .4s" style-hover="transform:rotate(0deg) translateY(4px) scale(1.03);box-shadow:0 26px 70px rgba(0,255,196,.15)">
         <div style="position:absolute;top:-10px;right:32px;transform:rotate(2deg);width:80px;height:22px;background:rgba(0,255,196,.4);backdrop-filter:blur(4px);border-radius:3px"></div>
-        <div><img src="Screenshots/Attached_image4.png" alt="Cold email reply from a prospect" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;"></div>
+        <div style="height:calc(100% - 20px)"><image-slot id="reply-4" shape="rounded" radius="10" placeholder="Reply screenshot"></image-slot></div>
         <span style="position:absolute;bottom:8px;left:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9a93a1">reply_005.png</span>
       </div>
-      <div class="hv19" style="grid-column:span 2;position:relative;background:#fff;border-radius:16px;padding:12px 12px 34px;transform:rotate(.4deg);box-shadow:0 24px 60px rgba(0,0,0,.5);height:320px;max-width:760px;margin:0 auto;width:100%;transition:transform .4s,box-shadow .4s">
+      <div style="grid-column:span 2;position:relative;background:#fff;border-radius:16px;padding:12px 12px 34px;transform:rotate(.4deg);box-shadow:0 24px 60px rgba(0,0,0,.5);height:320px;max-width:760px;margin:0 auto;width:100%;transition:transform .4s,box-shadow .4s" style-hover="transform:rotate(0deg) scale(1.02);box-shadow:0 30px 80px rgba(0,255,196,.15)">
         <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%) rotate(2deg);width:110px;height:26px;background:rgba(0,255,196,.4);backdrop-filter:blur(4px);border-radius:3px"></div>
-        <div style="height:calc(100% - 22px);overflow:hidden;display:flex;align-items:center;border-radius:10px"><img src="Screenshots/Attached_image8.png" alt="Cold email reply from a prospect" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;"></div>
+        <div style="height:calc(100% - 22px)"><image-slot id="reply-8" shape="rounded" radius="10" placeholder="Featured reply screenshot"></image-slot></div>
         <span style="position:absolute;bottom:9px;left:16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9a93a1">reply_006.png — verbatim</span>
       </div>
-      <div class="hv20" style="position:relative;background:#fff;border-radius:16px;padding:10px 10px 30px;transform:rotate(1.2deg);box-shadow:0 20px 50px rgba(0,0,0,.45);transition:transform .4s,box-shadow .4s">
+      <div style="position:relative;background:#fff;border-radius:16px;padding:10px 10px 30px;transform:rotate(1.2deg);box-shadow:0 20px 50px rgba(0,0,0,.45);height:250px;transition:transform .4s,box-shadow .4s" style-hover="transform:rotate(0deg) scale(1.03);box-shadow:0 26px 70px rgba(0,255,196,.15)">
         <div style="position:absolute;top:-10px;left:24px;transform:rotate(4deg);width:80px;height:22px;background:rgba(0,255,196,.4);backdrop-filter:blur(4px);border-radius:3px"></div>
-        <div><img src="Screenshots/Attached_image6.png" alt="Cold email reply from a prospect" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;"></div>
+        <div style="height:calc(100% - 20px)"><image-slot id="reply-6" shape="rounded" radius="10" placeholder="Reply screenshot"></image-slot></div>
         <span style="position:absolute;bottom:8px;left:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9a93a1">reply_007.png</span>
       </div>
-      <div class="hv21" style="position:relative;background:#fff;border-radius:16px;padding:10px 10px 30px;transform:rotate(-.8deg) translateY(12px);box-shadow:0 20px 50px rgba(0,0,0,.45);transition:transform .4s,box-shadow .4s">
+      <div style="position:relative;background:#fff;border-radius:16px;padding:10px 10px 30px;transform:rotate(-.8deg) translateY(12px);box-shadow:0 20px 50px rgba(0,0,0,.45);height:250px;transition:transform .4s,box-shadow .4s" style-hover="transform:rotate(0deg) translateY(6px) scale(1.03);box-shadow:0 26px 70px rgba(0,255,196,.15)">
         <div style="position:absolute;top:-10px;right:28px;transform:rotate(-2deg);width:80px;height:22px;background:rgba(0,255,196,.4);backdrop-filter:blur(4px);border-radius:3px"></div>
-        <div><img src="Screenshots/Attached_image5.png" alt="Cold email reply from a prospect" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;"></div>
+        <div style="height:calc(100% - 20px)"><image-slot id="reply-5" shape="rounded" radius="10" placeholder="Reply screenshot"></image-slot></div>
         <span style="position:absolute;bottom:8px;left:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9a93a1">reply_008.png</span>
       </div>
     </div>
@@ -329,8 +219,8 @@ cal-modal-box{z-index:200}
     </div>
 
     <!-- Phase 1 -->
-    <div class="phase-sticky" style="position:sticky;top:88px;z-index:10;margin-bottom:48px">
-      <div class="phase-card hv22" style="position:relative;overflow:hidden;background:#17121b;border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;min-height:420px;box-shadow:0 -20px 60px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.07);transition:border-color .4s"><div style="position:absolute;top:0;left:15%;right:15%;height:2px;background:linear-gradient(90deg,transparent,rgba(0,255,196,.45),transparent)"></div>
+    <div style="position:sticky;top:88px;z-index:10;margin-bottom:48px">
+      <div style="position:relative;overflow:hidden;background:#17121b;border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;min-height:420px;box-shadow:0 -20px 60px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.07);transition:border-color .4s" style-hover="border-color:rgba(0,255,196,.3)"><div style="position:absolute;top:0;left:15%;right:15%;height:2px;background:linear-gradient(90deg,transparent,rgba(0,255,196,.45),transparent)"></div>
         <div style="position:absolute;bottom:-40px;right:-10px;font-family:'Anton',sans-serif;font-size:230px;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.05);pointer-events:none;user-select:none">01</div>
         <span style="position:absolute;top:22px;right:28px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#7d7484">01 / 05</span>
         <div style="display:flex;flex-direction:column;justify-content:center;gap:16px;position:relative">
@@ -378,8 +268,8 @@ cal-modal-box{z-index:200}
     </div>
 
     <!-- Phase 2 -->
-    <div class="phase-sticky" style="position:sticky;top:100px;z-index:20;margin-bottom:48px">
-      <div class="phase-card hv23" style="position:relative;overflow:hidden;background:#17121b;border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;min-height:420px;box-shadow:0 -20px 60px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.07);transition:border-color .4s"><div style="position:absolute;top:0;left:15%;right:15%;height:2px;background:linear-gradient(90deg,transparent,rgba(0,255,196,.45),transparent)"></div>
+    <div style="position:sticky;top:100px;z-index:20;margin-bottom:48px">
+      <div style="position:relative;overflow:hidden;background:#17121b;border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;min-height:420px;box-shadow:0 -20px 60px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.07);transition:border-color .4s" style-hover="border-color:rgba(0,255,196,.3)"><div style="position:absolute;top:0;left:15%;right:15%;height:2px;background:linear-gradient(90deg,transparent,rgba(0,255,196,.45),transparent)"></div>
         <div style="position:absolute;bottom:-40px;right:-10px;font-family:'Anton',sans-serif;font-size:230px;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.05);pointer-events:none;user-select:none">02</div>
         <span style="position:absolute;top:22px;right:28px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#7d7484">02 / 05</span>
         <div style="display:flex;flex-direction:column;justify-content:center;gap:16px;position:relative">
@@ -420,8 +310,8 @@ cal-modal-box{z-index:200}
     </div>
 
     <!-- Phase 3 -->
-    <div class="phase-sticky" style="position:sticky;top:112px;z-index:30;margin-bottom:48px">
-      <div class="phase-card hv24" style="position:relative;overflow:hidden;background:#17121b;border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;min-height:420px;box-shadow:0 -20px 60px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.07);transition:border-color .4s"><div style="position:absolute;top:0;left:15%;right:15%;height:2px;background:linear-gradient(90deg,transparent,rgba(0,255,196,.45),transparent)"></div>
+    <div style="position:sticky;top:112px;z-index:30;margin-bottom:48px">
+      <div style="position:relative;overflow:hidden;background:#17121b;border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;min-height:420px;box-shadow:0 -20px 60px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.07);transition:border-color .4s" style-hover="border-color:rgba(0,255,196,.3)"><div style="position:absolute;top:0;left:15%;right:15%;height:2px;background:linear-gradient(90deg,transparent,rgba(0,255,196,.45),transparent)"></div>
         <div style="position:absolute;bottom:-40px;right:-10px;font-family:'Anton',sans-serif;font-size:230px;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.05);pointer-events:none;user-select:none">03</div>
         <span style="position:absolute;top:22px;right:28px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#7d7484">03 / 05</span>
         <div style="display:flex;flex-direction:column;justify-content:center;gap:16px;position:relative">
@@ -469,8 +359,8 @@ cal-modal-box{z-index:200}
     </div>
 
     <!-- Phase 4 -->
-    <div class="phase-sticky" style="position:sticky;top:124px;z-index:40;margin-bottom:48px">
-      <div class="phase-card hv25" style="position:relative;overflow:hidden;background:#17121b;border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;min-height:420px;box-shadow:0 -20px 60px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.07);transition:border-color .4s"><div style="position:absolute;top:0;left:15%;right:15%;height:2px;background:linear-gradient(90deg,transparent,rgba(0,255,196,.45),transparent)"></div>
+    <div style="position:sticky;top:124px;z-index:40;margin-bottom:48px">
+      <div style="position:relative;overflow:hidden;background:#17121b;border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;min-height:420px;box-shadow:0 -20px 60px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.07);transition:border-color .4s" style-hover="border-color:rgba(0,255,196,.3)"><div style="position:absolute;top:0;left:15%;right:15%;height:2px;background:linear-gradient(90deg,transparent,rgba(0,255,196,.45),transparent)"></div>
         <div style="position:absolute;bottom:-40px;right:-10px;font-family:'Anton',sans-serif;font-size:230px;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.05);pointer-events:none;user-select:none">04</div>
         <span style="position:absolute;top:22px;right:28px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#7d7484">04 / 05</span>
         <div style="display:flex;flex-direction:column;justify-content:center;gap:16px;position:relative">
@@ -505,8 +395,8 @@ cal-modal-box{z-index:200}
     </div>
 
     <!-- Phase 5 -->
-    <div class="phase-sticky" style="position:sticky;top:136px;z-index:50;margin-bottom:48px">
-      <div class="phase-card hv26" style="position:relative;overflow:hidden;background:#17121b;border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;min-height:420px;box-shadow:0 -20px 60px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.07);transition:border-color .4s"><div style="position:absolute;top:0;left:15%;right:15%;height:2px;background:linear-gradient(90deg,transparent,rgba(0,255,196,.45),transparent)"></div>
+    <div style="position:sticky;top:136px;z-index:50;margin-bottom:48px">
+      <div style="position:relative;overflow:hidden;background:#17121b;border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;min-height:420px;box-shadow:0 -20px 60px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.07);transition:border-color .4s" style-hover="border-color:rgba(0,255,196,.3)"><div style="position:absolute;top:0;left:15%;right:15%;height:2px;background:linear-gradient(90deg,transparent,rgba(0,255,196,.45),transparent)"></div>
         <div style="position:absolute;bottom:-40px;right:-10px;font-family:'Anton',sans-serif;font-size:230px;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(0,255,196,.1);pointer-events:none;user-select:none">05</div>
         <span style="position:absolute;top:22px;right:28px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#00ffc4">05 / 05</span>
         <div style="display:flex;flex-direction:column;justify-content:center;gap:16px;position:relative">
@@ -548,15 +438,15 @@ cal-modal-box{z-index:200}
     </div>
 
     <!-- THE RESULT -->
-    <div class="phase-sticky" style="position:sticky;top:148px;z-index:60">
+    <div style="position:sticky;top:148px;z-index:60">
       <div style="position:relative;border-radius:30px;padding:2px;overflow:hidden">
         <div style="position:absolute;inset:-120%;background:conic-gradient(from 0deg, transparent 0deg, rgba(0,255,196,.8) 40deg, transparent 90deg, transparent 180deg, rgba(0,255,196,.5) 220deg, transparent 270deg);animation:borderSpin 7s linear infinite"></div>
         <div style="position:relative;border-radius:28px;padding:72px 48px;text-align:center;background:radial-gradient(70% 100% at 50% 0%, rgba(0,179,137,.25) 0%, rgba(0,179,137,.05) 100%), #0f1512;display:flex;flex-direction:column;align-items:center;gap:20px">
           <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#00ffc4;border:1px solid rgba(0,255,196,.3);border-radius:999px;padding:7px 16px">The result</span>
           <h3 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(40px,5vw,68px);line-height:1.05;color:#fff;text-transform:uppercase">All you do is <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;text-transform:none;color:#00ffc4;animation:glowPulse 3.5s ease-in-out infinite">show up and close.</span></h3>
           <p style="margin:0;font-size:18px;color:#c2bbc8;max-width:560px;line-height:1.6">Your calendar fills up. Your pipeline grows. We handle the grind, you handle the revenue.</p>
-          <a class="cta-primary hv27" href="https://cal.com/hugo-van-baal-agjtxz/30min?overlayCalendar=true" data-book="1" data-cal-namespace="30min" data-cal-link="hugo-van-baal-agjtxz/30min" data-cal-config='{"layout":"month_view","theme":"dark"}' style="display:inline-flex;align-items:center;gap:12px;background:#00ffc4;color:#000;font-weight:700;font-size:16px;padding:15px 28px;border-radius:999px;position:relative;overflow:hidden;box-shadow:0 0 40px rgba(0,255,196,.25);transition:transform .25s,box-shadow .25s"><span style="position:absolute;top:0;bottom:0;left:0;width:45%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.6),transparent);animation:shimmer 2.6s ease-in-out infinite"></span><span style="position:relative">Apply For A Performance Campaign</span> <span style="position:relative;background:#000;color:#00ffc4;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:14px">→</span></a>
-          <span style="display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#a49daa"><span style="width:8px;height:8px;border-radius:50%;background:#ff5c5c;animation:blink 1.4s infinite"></span> We only onboard 2 new agencies per month</span>
+          <a href="#apply" style="display:inline-flex;align-items:center;gap:12px;background:#00ffc4;color:#000;font-weight:700;font-size:16px;padding:15px 28px;border-radius:999px;position:relative;overflow:hidden;box-shadow:0 0 40px rgba(0,255,196,.25);transition:transform .25s,box-shadow .25s" style-hover="background:#7dffe2;transform:translateY(-3px);box-shadow:0 0 70px rgba(0,255,196,.5);color:#000"><span style="position:absolute;top:0;bottom:0;left:0;width:45%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.6),transparent);animation:shimmer 2.6s ease-in-out infinite"></span><span style="position:relative">Apply For A Performance Campaign</span> <span style="position:relative;background:#000;color:#00ffc4;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:14px">→</span></a>
+          <span style="display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#a49daa"><span style="width:8px;height:8px;border-radius:50%;background:#ff5c5c;animation:blink 1.4s infinite"></span> We only onboard {{ spotsLeft }} new agencies per month</span>
         </div>
       </div>
     </div>
@@ -575,35 +465,35 @@ cal-modal-box{z-index:200}
       <p style="margin:0;font-size:17px;color:#a49daa">Real results and feedback from high-growth companies.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-bottom:20px">
-      <div class="hv28" style="border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:20px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:14px;transition:transform .35s,border-color .35s,box-shadow .35s">
+      <div style="border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:20px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:14px;transition:transform .35s,border-color .35s,box-shadow .35s" style-hover="transform:translateY(-6px);border-color:rgba(0,255,196,.35);box-shadow:0 20px 50px rgba(0,0,0,.4)">
         <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.1);aspect-ratio:16/9;background:#000"><iframe src="https://www.youtube.com/embed/pLpPL31xjxM" title="Exposure Lights testimonial" style="width:100%;height:100%;border:0" allowfullscreen="allowfullscreen" loading="lazy"></iframe></div>
         <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
           <span style="font-size:14px;font-weight:700;color:#fff">Exposure Lights</span>
           <span style="font-size:13px;letter-spacing:2px;color:#ffd700">★★★★★</span>
         </div>
       </div>
-      <div class="hv29" style="border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:20px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:14px;transition:transform .35s,border-color .35s,box-shadow .35s">
+      <div style="border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:20px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:14px;transition:transform .35s,border-color .35s,box-shadow .35s" style-hover="transform:translateY(-6px);border-color:rgba(0,255,196,.35);box-shadow:0 20px 50px rgba(0,0,0,.4)">
         <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.1);aspect-ratio:16/9;background:#000"><iframe src="https://www.youtube.com/embed/nAiY9665nto" title="Stirista testimonial" style="width:100%;height:100%;border:0" allowfullscreen="allowfullscreen" loading="lazy"></iframe></div>
         <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
           <span style="font-size:14px;font-weight:700;color:#fff">Stirista</span>
           <span style="font-size:13px;letter-spacing:2px;color:#ffd700">★★★★★</span>
         </div>
       </div>
-      <div class="hv30" style="border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:20px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:14px;transition:transform .35s,border-color .35s,box-shadow .35s">
+      <div style="border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:20px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:14px;transition:transform .35s,border-color .35s,box-shadow .35s" style-hover="transform:translateY(-6px);border-color:rgba(0,255,196,.35);box-shadow:0 20px 50px rgba(0,0,0,.4)">
         <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.1);aspect-ratio:16/9;background:#000"><iframe src="https://www.youtube.com/embed/ugY_OMwyonM" title="Want Branding testimonial" style="width:100%;height:100%;border:0" allowfullscreen="allowfullscreen" loading="lazy"></iframe></div>
         <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
           <span style="font-size:14px;font-weight:700;color:#fff">Want Branding</span>
           <span style="font-size:13px;letter-spacing:2px;color:#ffd700">★★★★★</span>
         </div>
       </div>
-      <div class="hv31" style="border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:20px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:14px;transition:transform .35s,border-color .35s,box-shadow .35s">
+      <div style="border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:20px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:14px;transition:transform .35s,border-color .35s,box-shadow .35s" style-hover="transform:translateY(-6px);border-color:rgba(0,255,196,.35);box-shadow:0 20px 50px rgba(0,0,0,.4)">
         <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.1);aspect-ratio:16/9;background:#000"><iframe src="https://www.youtube.com/embed/N4AnsZYrGsM" title="Avalaunch Media testimonial" style="width:100%;height:100%;border:0" allowfullscreen="allowfullscreen" loading="lazy"></iframe></div>
         <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
           <span style="font-size:14px;font-weight:700;color:#fff">Avalaunch Media</span>
           <span style="font-size:13px;letter-spacing:2px;color:#ffd700">★★★★★</span>
         </div>
       </div>
-      <div class="hv32" style="border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:20px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:14px;transition:transform .35s,border-color .35s,box-shadow .35s">
+      <div style="border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:20px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:14px;transition:transform .35s,border-color .35s,box-shadow .35s" style-hover="transform:translateY(-6px);border-color:rgba(0,255,196,.35);box-shadow:0 20px 50px rgba(0,0,0,.4)">
         <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.1);aspect-ratio:16/9;background:#000"><iframe src="https://www.youtube.com/embed/RoO6P1Lvsjo" title="IntellaWaste testimonial" style="width:100%;height:100%;border:0" allowfullscreen="allowfullscreen" loading="lazy"></iframe></div>
         <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
           <span style="font-size:14px;font-weight:700;color:#fff">IntellaWaste</span>
@@ -616,36 +506,36 @@ cal-modal-box{z-index:200}
       </div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
-      <div class="hv33" style="position:relative;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:36px 32px 32px;display:flex;flex-direction:column;gap:18px;background:rgba(255,255,255,.03);transition:transform .35s,border-color .35s">
+      <div style="position:relative;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:36px 32px 32px;display:flex;flex-direction:column;gap:18px;background:rgba(255,255,255,.03);transition:transform .35s,border-color .35s" style-hover="transform:translateY(-6px);border-color:rgba(0,255,196,.35)">
         <span style="position:absolute;top:8px;left:24px;font-family:'Instrument Serif',serif;font-style:italic;font-size:80px;line-height:1;color:rgba(0,255,196,.18);pointer-events:none;user-select:none">"</span>
         <span style="font-size:13px;letter-spacing:2px;color:#ffd700;position:relative">★★★★★</span>
         <p style="margin:0;font-size:16.5px;line-height:1.65;color:#d5cfd9;font-family:'Instrument Serif',serif;font-style:italic;position:relative">"I thought I knew something about cold email, but after Hugo showed me the ropes I realized I knew nothing. Hugo is very skilled in all the foundational elements that move the needle: deliverability, copy and scalability."</p>
         <div style="display:flex;align-items:center;gap:12px;margin-top:auto">
-          <img src="Testimonials/Jesse Bak.jpeg" alt="Jesse Bak" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;width:44px;height:44px">
+          <image-slot id="avatar-jesse" shape="circle" style="width:44px;height:44px" placeholder="Photo"></image-slot>
           <div style="display:flex;flex-direction:column;gap:2px">
             <span style="font-size:14px;font-weight:700;color:#fff">Jesse Bak</span>
             <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#8b8292">Owner / Social Selling Consultant</span>
           </div>
         </div>
       </div>
-      <div class="hv34" style="position:relative;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:36px 32px 32px;display:flex;flex-direction:column;gap:18px;background:rgba(255,255,255,.03);transition:transform .35s,border-color .35s">
+      <div style="position:relative;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:36px 32px 32px;display:flex;flex-direction:column;gap:18px;background:rgba(255,255,255,.03);transition:transform .35s,border-color .35s" style-hover="transform:translateY(-6px);border-color:rgba(0,255,196,.35)">
         <span style="position:absolute;top:8px;left:24px;font-family:'Instrument Serif',serif;font-style:italic;font-size:80px;line-height:1;color:rgba(0,255,196,.18);pointer-events:none;user-select:none">"</span>
         <span style="font-size:13px;letter-spacing:2px;color:#ffd700;position:relative">★★★★★</span>
         <p style="margin:0;font-size:16.5px;line-height:1.65;color:#d5cfd9;font-family:'Instrument Serif',serif;font-style:italic;position:relative">"Hugo's persistent and creative approach consistently delivered meetings that our sales team could convert into opportunities. His professional representation of our company made him a valuable extension of our team."</p>
         <div style="display:flex;align-items:center;gap:12px;margin-top:auto">
-          <img src="Testimonials/Ajinder Banns.jpeg" alt="Ajinder Banns" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;width:44px;height:44px">
+          <image-slot id="avatar-ajinder" shape="circle" style="width:44px;height:44px" placeholder="Photo"></image-slot>
           <div style="display:flex;flex-direction:column;gap:2px">
             <span style="font-size:14px;font-weight:700;color:#fff">Ajinder Banns</span>
             <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#8b8292">Senior Sales Director</span>
           </div>
         </div>
       </div>
-      <div class="hv35" style="position:relative;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:36px 32px 32px;display:flex;flex-direction:column;gap:18px;background:rgba(255,255,255,.03);transition:transform .35s,border-color .35s">
+      <div style="position:relative;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:36px 32px 32px;display:flex;flex-direction:column;gap:18px;background:rgba(255,255,255,.03);transition:transform .35s,border-color .35s" style-hover="transform:translateY(-6px);border-color:rgba(0,255,196,.35)">
         <span style="position:absolute;top:8px;left:24px;font-family:'Instrument Serif',serif;font-style:italic;font-size:80px;line-height:1;color:rgba(0,255,196,.18);pointer-events:none;user-select:none">"</span>
         <span style="font-size:13px;letter-spacing:2px;color:#ffd700;position:relative">★★★★★</span>
         <p style="margin:0;font-size:16.5px;line-height:1.65;color:#d5cfd9;font-family:'Instrument Serif',serif;font-style:italic;position:relative">"For a company that focuses on a small niche market, we are particularly surprised by the results. We have had 15 qualified conversations and acquired 3 new customers within a period of 1 month."</p>
         <div style="display:flex;align-items:center;gap:12px;margin-top:auto">
-          <img src="Testimonials/Theo Gors.jpeg" alt="Theo Görs" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;width:44px;height:44px">
+          <image-slot id="avatar-theo" shape="circle" style="width:44px;height:44px" placeholder="Photo"></image-slot>
           <div style="display:flex;flex-direction:column;gap:2px">
             <span style="font-size:14px;font-weight:700;color:#fff">Theo Görs</span>
             <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#8b8292">CEO @ OnicBlue BV</span>
@@ -667,7 +557,7 @@ cal-modal-box{z-index:200}
       <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,4.5vw,62px);line-height:1.05;color:#fff;text-transform:uppercase">Proof is in the <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;text-transform:none;color:#00ffc4">pudding.</span></h2>
     </div>
     <div style="display:grid;grid-template-columns:minmax(0,1fr);gap:40px">
-      <div class="cs-card" style="position:relative;background:#17121b;border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center">
+      <div style="position:relative;background:#17121b;border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center">
         <div style="display:flex;flex-direction:column;justify-content:center;gap:16px;position:relative">
           <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#7d7484">Case study — National Positions</span>
           <h3 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:38px;color:#fff;text-transform:uppercase;line-height:1.08"><span style="background:linear-gradient(90deg,#00ffc4,#7dffe2,#00b389,#00ffc4);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradientMove 5s linear infinite">$350K ARR</span> added in 7.5 months.</h3>
@@ -676,19 +566,19 @@ cal-modal-box{z-index:200}
             <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;color:#00ffc4;border:1px solid rgba(0,255,196,.3);border-radius:999px;padding:6px 14px">✓ $350K new ARR</span>
             <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;color:#00ffc4;border:1px solid rgba(0,255,196,.3);border-radius:999px;padding:6px 14px">✓ System built from scratch</span>
           </div>
-          <a class="hv36" href="https://cal.com/hugo-van-baal-agjtxz/30min?overlayCalendar=true" data-book="1" data-cal-namespace="30min" data-cal-link="hugo-van-baal-agjtxz/30min" data-cal-config='{"layout":"month_view","theme":"dark"}' style="display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(0,255,196,.4);color:#00ffc4;font-weight:700;font-size:14.5px;padding:11px 22px;border-radius:999px;width:fit-content;margin-top:8px;transition:background .3s">Book Your Demo ↗</a>
+          <a href="#apply" style="display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(0,255,196,.4);color:#00ffc4;font-weight:700;font-size:14.5px;padding:11px 22px;border-radius:999px;width:fit-content;margin-top:8px;transition:background .3s" style-hover="background:rgba(0,255,196,.1);color:#00ffc4">Book Your Demo ↗</a>
         </div>
-        <div class="hv37" style="position:relative;background:#fff;border-radius:16px;padding:10px;min-height:320px;transition:transform .4s;box-shadow:0 20px 50px rgba(0,0,0,.4)">
+        <div style="position:relative;background:#fff;border-radius:16px;padding:10px;min-height:320px;transition:transform .4s;box-shadow:0 20px 50px rgba(0,0,0,.4)" style-hover="transform:scale(1.02) rotate(.4deg)">
           <span style="position:absolute;top:18px;right:18px;z-index:2;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#000;background:#00ffc4;border-radius:999px;padding:5px 12px">Proof</span>
-          <img src="Proof Elements website/Untitled design (8).png" alt="National Positions results" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;">
+          <image-slot id="cs-np" shape="rounded" radius="10" placeholder="National Positions proof screenshot"></image-slot>
         </div>
       </div>
-      <div class="cs-card" style="position:relative;background:#17121b;border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center">
-        <div class="cs-media-first hv38" style="position:relative;background:#fff;border-radius:16px;padding:10px;min-height:320px;order:1;transition:transform .4s;box-shadow:0 20px 50px rgba(0,0,0,.4)">
+      <div style="position:relative;background:#17121b;border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center">
+        <div style="position:relative;background:#fff;border-radius:16px;padding:10px;min-height:320px;order:1;transition:transform .4s;box-shadow:0 20px 50px rgba(0,0,0,.4)" style-hover="transform:scale(1.02) rotate(-.4deg)">
           <span style="position:absolute;top:18px;right:18px;z-index:2;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#000;background:#00ffc4;border-radius:999px;padding:5px 12px">Proof</span>
-          <img src="Proof Elements website/10.png" alt="Avalaunch Media results" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;">
+          <image-slot id="cs-avalaunch" shape="rounded" radius="10" placeholder="Avalaunch Media proof screenshot"></image-slot>
         </div>
-        <div class="cs-text-second" style="display:flex;flex-direction:column;justify-content:center;gap:16px;order:2;position:relative">
+        <div style="display:flex;flex-direction:column;justify-content:center;gap:16px;order:2;position:relative">
           <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#7d7484">Case study — Avalaunch Media</span>
           <h3 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:38px;color:#fff;text-transform:uppercase;line-height:1.08"><span style="background:linear-gradient(90deg,#00ffc4,#7dffe2,#00b389,#00ffc4);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradientMove 5s linear infinite">55 qualified calls</span> booked in 3 months.</h3>
           <p style="margin:0;font-size:16px;line-height:1.65;color:#a49daa">From zero outbound signal and manual referrals to a multi-channel prospecting system filling the calendar with qualified prospects.</p>
@@ -696,10 +586,10 @@ cal-modal-box{z-index:200}
             <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;color:#00ffc4;border:1px solid rgba(0,255,196,.3);border-radius:999px;padding:6px 14px">✓ 55 calls in 90 days</span>
             <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;color:#00ffc4;border:1px solid rgba(0,255,196,.3);border-radius:999px;padding:6px 14px">✓ Built from zero</span>
           </div>
-          <a class="hv39" href="https://cal.com/hugo-van-baal-agjtxz/30min?overlayCalendar=true" data-book="1" data-cal-namespace="30min" data-cal-link="hugo-van-baal-agjtxz/30min" data-cal-config='{"layout":"month_view","theme":"dark"}' style="display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(0,255,196,.4);color:#00ffc4;font-weight:700;font-size:14.5px;padding:11px 22px;border-radius:999px;width:fit-content;margin-top:8px;transition:background .3s">Book Your Demo ↗</a>
+          <a href="#apply" style="display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(0,255,196,.4);color:#00ffc4;font-weight:700;font-size:14.5px;padding:11px 22px;border-radius:999px;width:fit-content;margin-top:8px;transition:background .3s" style-hover="background:rgba(0,255,196,.1);color:#00ffc4">Book Your Demo ↗</a>
         </div>
       </div>
-      <div class="cs-card" style="position:relative;background:#17121b;border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center">
+      <div style="position:relative;background:#17121b;border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center">
         <div style="display:flex;flex-direction:column;justify-content:center;gap:16px;position:relative">
           <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#7d7484">Case study — IntellaWaste</span>
           <h3 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:38px;color:#fff;text-transform:uppercase;line-height:1.08"><span style="background:linear-gradient(90deg,#00ffc4,#7dffe2,#00b389,#00ffc4);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradientMove 5s linear infinite">1 lead</span> for every 5.3 contacts.</h3>
@@ -708,11 +598,11 @@ cal-modal-box{z-index:200}
             <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;color:#00ffc4;border:1px solid rgba(0,255,196,.3);border-radius:999px;padding:6px 14px">✓ 18.9% conversion</span>
             <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;color:#00ffc4;border:1px solid rgba(0,255,196,.3);border-radius:999px;padding:6px 14px">✓ Fully automated</span>
           </div>
-          <a class="hv40" href="https://cal.com/hugo-van-baal-agjtxz/30min?overlayCalendar=true" data-book="1" data-cal-namespace="30min" data-cal-link="hugo-van-baal-agjtxz/30min" data-cal-config='{"layout":"month_view","theme":"dark"}' style="display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(0,255,196,.4);color:#00ffc4;font-weight:700;font-size:14.5px;padding:11px 22px;border-radius:999px;width:fit-content;margin-top:8px;transition:background .3s">Book Your Demo ↗</a>
+          <a href="#apply" style="display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(0,255,196,.4);color:#00ffc4;font-weight:700;font-size:14.5px;padding:11px 22px;border-radius:999px;width:fit-content;margin-top:8px;transition:background .3s" style-hover="background:rgba(0,255,196,.1);color:#00ffc4">Book Your Demo ↗</a>
         </div>
-        <div class="hv41" style="position:relative;background:#fff;border-radius:16px;padding:10px;min-height:320px;transition:transform .4s;box-shadow:0 20px 50px rgba(0,0,0,.4)">
+        <div style="position:relative;background:#fff;border-radius:16px;padding:10px;min-height:320px;transition:transform .4s;box-shadow:0 20px 50px rgba(0,0,0,.4)" style-hover="transform:scale(1.02) rotate(.4deg)">
           <span style="position:absolute;top:18px;right:18px;z-index:2;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#000;background:#00ffc4;border-radius:999px;padding:5px 12px">Proof</span>
-          <img src="Proof Elements website/8.png" alt="IntellaWaste results" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;">
+          <image-slot id="cs-intella" shape="rounded" radius="10" placeholder="IntellaWaste proof screenshot"></image-slot>
         </div>
       </div>
     </div>
@@ -729,7 +619,7 @@ cal-modal-box{z-index:200}
     <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:48px;text-align:center;align-items:center">
       <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,4.5vw,62px);line-height:1.05;color:#fff;text-transform:uppercase;max-width:900px;text-wrap:balance">Why performance-based <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;text-transform:none;color:#00ffc4">changes everything.</span></h2>
     </div>
-    <div class="table-scroll"><div class="compare-grid" style="display:grid;grid-template-columns:150px repeat(3,1fr);gap:0;border:1px solid rgba(255,255,255,.1);border-radius:20px;overflow:hidden;font-size:14.5px;box-shadow:0 30px 80px rgba(0,0,0,.35)">
+    <div style="display:grid;grid-template-columns:150px repeat(3,1fr);gap:0;border:1px solid rgba(255,255,255,.1);border-radius:20px;overflow:hidden;font-size:14.5px;box-shadow:0 30px 80px rgba(0,0,0,.35)">
       <div style="padding:22px 20px;background:rgba(255,255,255,.02)"></div>
       <div style="padding:22px 20px;background:rgba(0,179,137,.16);border-left:1px solid rgba(0,255,196,.35);border-right:1px solid rgba(0,255,196,.35);display:flex;flex-direction:column;gap:7px">
         <span style="font-family:'Anton',sans-serif;font-size:19px;color:#00ffc4;text-transform:uppercase;letter-spacing:.02em;animation:glowPulse 4s ease-in-out infinite">Humain Demand</span>
@@ -737,44 +627,13 @@ cal-modal-box{z-index:200}
       </div>
       <div style="padding:22px 20px;background:rgba(255,255,255,.04);display:flex;align-items:center"><span style="font-weight:700;color:#a49daa">Typical agency</span></div>
       <div style="padding:22px 20px;background:rgba(255,255,255,.04);display:flex;align-items:center"><span style="font-weight:700;color:#a49daa">Do-it-yourself</span></div>
-      
-        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#7d7484;display:flex;align-items:center">Payment model</div>
-        <div style="padding:18px 20px;border-top:1px solid rgba(0,255,196,.15);border-left:1px solid rgba(0,255,196,.35);border-right:1px solid rgba(0,255,196,.35);background:rgba(0,179,137,.08);color:#fff;font-weight:600;display:flex;align-items:center;gap:8px"><span style="color:#00ffc4">✓</span> Pay per qualified meeting</div>
-        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);color:#8b8292;display:flex;align-items:center">Monthly retainer, hope it works</div>
-        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);color:#8b8292;display:flex;align-items:center">Your time + tool costs</div>
-      
-        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#7d7484;display:flex;align-items:center">Targeting</div>
-        <div style="padding:18px 20px;border-top:1px solid rgba(0,255,196,.15);border-left:1px solid rgba(0,255,196,.35);border-right:1px solid rgba(0,255,196,.35);background:rgba(0,179,137,.08);color:#fff;font-weight:600;display:flex;align-items:center;gap:8px"><span style="color:#00ffc4">✓</span> Demand Activation Zones</div>
-        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);color:#8b8292;display:flex;align-items:center">Job titles and company size</div>
-        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);color:#8b8292;display:flex;align-items:center">Whatever you can figure out</div>
-      
-        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#7d7484;display:flex;align-items:center">Data</div>
-        <div style="padding:18px 20px;border-top:1px solid rgba(0,255,196,.15);border-left:1px solid rgba(0,255,196,.35);border-right:1px solid rgba(0,255,196,.35);background:rgba(0,179,137,.08);color:#fff;font-weight:600;display:flex;align-items:center;gap:8px"><span style="color:#00ffc4">✓</span> Custom AI agents for signals no one else has</div>
-        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);color:#8b8292;display:flex;align-items:center">Same lists everyone uses</div>
-        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);color:#8b8292;display:flex;align-items:center">Apollo/ZoomInfo and pray</div>
-      
-        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#7d7484;display:flex;align-items:center">Research</div>
-        <div style="padding:18px 20px;border-top:1px solid rgba(0,255,196,.15);border-left:1px solid rgba(0,255,196,.35);border-right:1px solid rgba(0,255,196,.35);background:rgba(0,179,137,.08);color:#fff;font-weight:600;display:flex;align-items:center;gap:8px"><span style="color:#00ffc4">✓</span> Reddit, sales calls, customer interviews</div>
-        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);color:#8b8292;display:flex;align-items:center">Skim your website</div>
-        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);color:#8b8292;display:flex;align-items:center">Skip it</div>
-      
-        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#7d7484;display:flex;align-items:center">Personalization</div>
-        <div style="padding:18px 20px;border-top:1px solid rgba(0,255,196,.15);border-left:1px solid rgba(0,255,196,.35);border-right:1px solid rgba(0,255,196,.35);background:rgba(0,179,137,.08);color:#fff;font-weight:600;display:flex;align-items:center;gap:8px"><span style="color:#00ffc4">✓</span> 1:1 unique copy per prospect</div>
-        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);color:#8b8292;display:flex;align-items:center">Templates with {first_name}</div>
-        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);color:#8b8292;display:flex;align-items:center">Templates with {first_name}</div>
-      
-        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#7d7484;display:flex;align-items:center">Risk</div>
-        <div style="padding:18px 20px;border-top:1px solid rgba(0,255,196,.15);border-left:1px solid rgba(0,255,196,.35);border-right:1px solid rgba(0,255,196,.35);background:rgba(0,179,137,.08);color:#fff;font-weight:600;display:flex;align-items:center;gap:8px"><span style="color:#00ffc4">✓</span> Ours</div>
-        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);color:#8b8292;display:flex;align-items:center">Yours</div>
-        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);color:#8b8292;display:flex;align-items:center">Yours</div>
-      
-        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#7d7484;display:flex;align-items:center">Workload</div>
-        <div style="padding:18px 20px;border-top:1px solid rgba(0,255,196,.15);border-left:1px solid rgba(0,255,196,.35);border-right:1px solid rgba(0,255,196,.35);background:rgba(0,179,137,.08);color:#fff;font-weight:600;display:flex;align-items:center;gap:8px"><span style="color:#00ffc4">✓</span> Us (done for you)</div>
-        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);color:#8b8292;display:flex;align-items:center">Them (maybe)</div>
-        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);color:#8b8292;display:flex;align-items:center">You</div>
-      
+      <sc-for list="{{ compareRows }}" as="row" hint-placeholder-count="7">
+        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#7d7484;display:flex;align-items:center">{{ row.label }}</div>
+        <div style="padding:18px 20px;border-top:1px solid rgba(0,255,196,.15);border-left:1px solid rgba(0,255,196,.35);border-right:1px solid rgba(0,255,196,.35);background:rgba(0,179,137,.08);color:#fff;font-weight:600;display:flex;align-items:center;gap:8px"><span style="color:#00ffc4">✓</span> {{ row.us }}</div>
+        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);color:#8b8292;display:flex;align-items:center">{{ row.agency }}</div>
+        <div style="padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);color:#8b8292;display:flex;align-items:center">{{ row.diy }}</div>
+      </sc-for>
     </div>
-</div>
   </div>
 </section>
 
@@ -789,7 +648,7 @@ cal-modal-box{z-index:200}
       <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,4.5vw,62px);line-height:1.05;color:#fff;text-transform:uppercase">Two ways we help you <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;text-transform:none;color:#00ffc4">grow.</span></h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px">
-      <div class="hv42" style="position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:44px 40px;display:flex;flex-direction:column;gap:18px;background:linear-gradient(180deg, rgba(0,255,196,.06) 0%, rgba(255,255,255,.02) 30%);transition:transform .35s,border-color .35s,box-shadow .35s">
+      <div style="position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:44px 40px;display:flex;flex-direction:column;gap:18px;background:linear-gradient(180deg, rgba(0,255,196,.06) 0%, rgba(255,255,255,.02) 30%);transition:transform .35s,border-color .35s,box-shadow .35s" style-hover="transform:translateY(-6px);border-color:rgba(0,255,196,.4);box-shadow:0 30px 70px rgba(0,0,0,.45)">
         <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#00ffc4,transparent)"></div>
         <div style="background:#0b090d;background-image:radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);background-size:22px 22px;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px;margin-bottom:8px">
           <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:16px;display:flex;gap:12px;align-items:flex-start;animation:floaty 6s ease-in-out infinite;backdrop-filter:blur(6px)">
@@ -813,7 +672,7 @@ cal-modal-box{z-index:200}
           <span style="display:flex;gap:10px;font-size:15px;color:#d5cfd9"><span style="color:#00ffc4;font-weight:700">✓</span> Performance based pricing</span>
         </div>
       </div>
-      <div class="hv43" style="position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:44px 40px;display:flex;flex-direction:column;gap:18px;background:linear-gradient(180deg, rgba(70,30,110,.12) 0%, rgba(255,255,255,.02) 30%);transition:transform .35s,border-color .35s,box-shadow .35s">
+      <div style="position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:44px 40px;display:flex;flex-direction:column;gap:18px;background:linear-gradient(180deg, rgba(70,30,110,.12) 0%, rgba(255,255,255,.02) 30%);transition:transform .35s,border-color .35s,box-shadow .35s" style-hover="transform:translateY(-6px);border-color:rgba(0,255,196,.4);box-shadow:0 30px 70px rgba(0,0,0,.45)">
         <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(190,120,255,.7),transparent)"></div>
         <div style="background:#0b090d;background-image:radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);background-size:22px 22px;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px;margin-bottom:8px;display:flex;justify-content:center">
           <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;width:100%;max-width:280px;animation:floaty 6s ease-in-out 1.5s infinite;backdrop-filter:blur(6px)">
@@ -851,23 +710,23 @@ cal-modal-box{z-index:200}
       <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,4.5vw,62px);line-height:1.05;color:#fff;text-transform:uppercase">The engine of <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;text-transform:none;color:#00ffc4">growth.</span></h2>
       <p style="margin:0;font-size:17px;color:#a49daa">Data flows in. Meetings flow out.</p>
     </div>
-    <div class="orbit" style="position:relative;width:480px;height:480px;max-width:100%;display:flex;align-items:center;justify-content:center">
+    <div style="position:relative;width:480px;height:480px;max-width:100%;display:flex;align-items:center;justify-content:center">
       <div style="position:absolute;inset:40px;border:1px dashed rgba(255,255,255,.12);border-radius:50%"></div>
       <div style="position:absolute;inset:130px;border:1px dashed rgba(0,255,196,.15);border-radius:50%"></div>
       <div style="position:absolute;left:50%;top:50%;width:220px;height:220px;margin:-110px 0 0 -110px;border-radius:50%;border:1px solid rgba(0,255,196,.35);animation:pulseRing 3.2s ease-out infinite"></div>
       <div style="position:absolute;left:50%;top:50%;width:220px;height:220px;margin:-110px 0 0 -110px;border-radius:50%;border:1px solid rgba(0,255,196,.25);animation:pulseRing 3.2s ease-out 1.6s infinite"></div>
       <div style="position:absolute;inset:0;animation:spinSlow 60s linear infinite">
-        <div style="position:absolute;top:12px;left:50%;transform:translateX(-50%)"><div style="width:56px;height:56px;background:#17121b;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px;box-sizing:border-box;animation:spinSlowRev 60s linear infinite;box-shadow:0 8px 24px rgba(0,0,0,.5)"><img src="logos/apify-symbol-safe.png" alt="Apify" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;border-radius:8px;object-fit:contain;"></div></div>
-        <div style="position:absolute;top:74px;right:74px"><div style="width:56px;height:56px;background:#17121b;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px;box-sizing:border-box;animation:spinSlowRev 60s linear infinite;box-shadow:0 8px 24px rgba(0,0,0,.5)"><img src="logos/Icon (1).png" alt="Outbound tool" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;border-radius:8px;object-fit:contain;"></div></div>
-        <div style="position:absolute;top:50%;right:12px;transform:translateY(-50%)"><div style="width:56px;height:56px;background:#17121b;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px;box-sizing:border-box;animation:spinSlowRev 60s linear infinite;box-shadow:0 8px 24px rgba(0,0,0,.5)"><img src="logos/Icon (2).png" alt="Outbound tool" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;border-radius:8px;object-fit:contain;"></div></div>
-        <div style="position:absolute;bottom:74px;right:74px"><div style="width:56px;height:56px;background:#17121b;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px;box-sizing:border-box;animation:spinSlowRev 60s linear infinite;box-shadow:0 8px 24px rgba(0,0,0,.5)"><img src="logos/idHsCfI-UV_1766488223774.jpeg" alt="Outbound tool" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;border-radius:8px;object-fit:contain;"></div></div>
-        <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%)"><div style="width:56px;height:56px;background:#17121b;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px;box-sizing:border-box;animation:spinSlowRev 60s linear infinite;box-shadow:0 8px 24px rgba(0,0,0,.5)"><img src="logos/idk4YGndV9_1766488176343.jpeg" alt="Outbound tool" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;border-radius:8px;object-fit:contain;"></div></div>
-        <div style="position:absolute;bottom:74px;left:74px"><div style="width:56px;height:56px;background:#17121b;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px;box-sizing:border-box;animation:spinSlowRev 60s linear infinite;box-shadow:0 8px 24px rgba(0,0,0,.5)"><img src="logos/idSl0sAgFq_logos.jpeg" alt="Outbound tool" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;border-radius:8px;object-fit:contain;"></div></div>
-        <div style="position:absolute;top:50%;left:12px;transform:translateY(-50%)"><div style="width:56px;height:56px;background:#17121b;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px;box-sizing:border-box;animation:spinSlowRev 60s linear infinite;box-shadow:0 8px 24px rgba(0,0,0,.5)"><img src="logos/Symbol (1).png" alt="Outbound tool" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;border-radius:8px;object-fit:contain;"></div></div>
-        <div style="position:absolute;top:74px;left:74px"><div style="width:56px;height:56px;background:#17121b;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px;box-sizing:border-box;animation:spinSlowRev 60s linear infinite;box-shadow:0 8px 24px rgba(0,0,0,.5)"><img src="logos/Symbol.png" alt="Outbound tool" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;border-radius:8px;object-fit:contain;"></div></div>
+        <div style="position:absolute;top:12px;left:50%;transform:translateX(-50%)"><div style="width:56px;height:56px;background:#17121b;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px;box-sizing:border-box;animation:spinSlowRev 60s linear infinite;box-shadow:0 8px 24px rgba(0,0,0,.5)"><image-slot id="orbit-1" shape="rounded" radius="8" placeholder="Tool"></image-slot></div></div>
+        <div style="position:absolute;top:74px;right:74px"><div style="width:56px;height:56px;background:#17121b;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px;box-sizing:border-box;animation:spinSlowRev 60s linear infinite;box-shadow:0 8px 24px rgba(0,0,0,.5)"><image-slot id="orbit-2" shape="rounded" radius="8" placeholder="Tool"></image-slot></div></div>
+        <div style="position:absolute;top:50%;right:12px;transform:translateY(-50%)"><div style="width:56px;height:56px;background:#17121b;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px;box-sizing:border-box;animation:spinSlowRev 60s linear infinite;box-shadow:0 8px 24px rgba(0,0,0,.5)"><image-slot id="orbit-3" shape="rounded" radius="8" placeholder="Tool"></image-slot></div></div>
+        <div style="position:absolute;bottom:74px;right:74px"><div style="width:56px;height:56px;background:#17121b;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px;box-sizing:border-box;animation:spinSlowRev 60s linear infinite;box-shadow:0 8px 24px rgba(0,0,0,.5)"><image-slot id="orbit-4" shape="rounded" radius="8" placeholder="Tool"></image-slot></div></div>
+        <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%)"><div style="width:56px;height:56px;background:#17121b;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px;box-sizing:border-box;animation:spinSlowRev 60s linear infinite;box-shadow:0 8px 24px rgba(0,0,0,.5)"><image-slot id="orbit-5" shape="rounded" radius="8" placeholder="Tool"></image-slot></div></div>
+        <div style="position:absolute;bottom:74px;left:74px"><div style="width:56px;height:56px;background:#17121b;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px;box-sizing:border-box;animation:spinSlowRev 60s linear infinite;box-shadow:0 8px 24px rgba(0,0,0,.5)"><image-slot id="orbit-6" shape="rounded" radius="8" placeholder="Tool"></image-slot></div></div>
+        <div style="position:absolute;top:50%;left:12px;transform:translateY(-50%)"><div style="width:56px;height:56px;background:#17121b;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px;box-sizing:border-box;animation:spinSlowRev 60s linear infinite;box-shadow:0 8px 24px rgba(0,0,0,.5)"><image-slot id="orbit-7" shape="rounded" radius="8" placeholder="Tool"></image-slot></div></div>
+        <div style="position:absolute;top:74px;left:74px"><div style="width:56px;height:56px;background:#17121b;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px;box-sizing:border-box;animation:spinSlowRev 60s linear infinite;box-shadow:0 8px 24px rgba(0,0,0,.5)"><image-slot id="orbit-8" shape="rounded" radius="8" placeholder="Tool"></image-slot></div></div>
       </div>
       <div style="position:relative;width:110px;height:110px;background:#100d13;border:1px solid rgba(0,255,196,.4);border-radius:24px;padding:20px;box-sizing:border-box;box-shadow:0 0 60px rgba(0,255,196,.25)">
-        <img src="logos/Clay Arch Marque (1).png" alt="Clay" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;border-radius:12px;object-fit:contain;">
+        <image-slot id="orbit-center" shape="rounded" radius="12" placeholder="Clay logo"></image-slot>
       </div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;width:100%;max-width:1000px;margin-top:48px">
@@ -909,27 +768,27 @@ cal-modal-box{z-index:200}
       <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,4.5vw,62px);line-height:1.05;color:#fff;text-transform:uppercase">This is perfect for you <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;text-transform:none;color:#00ffc4">if</span></h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
-      <div class="hv44" style="border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:32px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:16px;transform:rotate(-.3deg);transition:transform .35s,border-color .35s">
+      <div style="border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:32px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:16px;transform:rotate(-.3deg);transition:transform .35s,border-color .35s" style-hover="transform:rotate(0deg) translateY(-6px);border-color:rgba(0,255,196,.35)">
         <span style="font-family:'Anton',sans-serif;font-size:34px;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.25)">01</span>
         <p style="margin:0;font-size:17px;line-height:1.6;color:#d5cfd9">You're a marketing agency doing <b style="color:#fff">$100K+/month</b></p>
       </div>
-      <div class="hv45" style="border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:32px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:16px;transform:rotate(.3deg);transition:transform .35s,border-color .35s">
+      <div style="border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:32px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:16px;transform:rotate(.3deg);transition:transform .35s,border-color .35s" style-hover="transform:rotate(0deg) translateY(-6px);border-color:rgba(0,255,196,.35)">
         <span style="font-family:'Anton',sans-serif;font-size:34px;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.25)">02</span>
         <p style="margin:0;font-size:17px;line-height:1.6;color:#d5cfd9">You have a target market with at least <b style="color:#fff">60,000 contacts</b></p>
       </div>
-      <div class="hv46" style="border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:32px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:16px;transform:rotate(-.2deg);transition:transform .35s,border-color .35s">
+      <div style="border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:32px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:16px;transform:rotate(-.2deg);transition:transform .35s,border-color .35s" style-hover="transform:rotate(0deg) translateY(-6px);border-color:rgba(0,255,196,.35)">
         <span style="font-family:'Anton',sans-serif;font-size:34px;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.25)">03</span>
         <p style="margin:0;font-size:17px;line-height:1.6;color:#d5cfd9">Referrals aren't cutting it anymore and you need <b style="color:#fff">predictable pipeline</b></p>
       </div>
-      <div class="hv47" style="border:1px solid rgba(255,92,92,.25);border-radius:18px;padding:32px;background:rgba(255,92,92,.04);display:flex;flex-direction:column;gap:16px;transform:rotate(.25deg);transition:transform .35s,border-color .35s">
+      <div style="border:1px solid rgba(255,92,92,.25);border-radius:18px;padding:32px;background:rgba(255,92,92,.04);display:flex;flex-direction:column;gap:16px;transform:rotate(.25deg);transition:transform .35s,border-color .35s" style-hover="transform:rotate(0deg) translateY(-6px);border-color:rgba(255,92,92,.5)">
         <span style="font-family:'Anton',sans-serif;font-size:34px;color:transparent;-webkit-text-stroke:1px rgba(255,92,92,.5)">04</span>
         <p style="margin:0;font-size:17px;line-height:1.6;color:#d5cfd9">You've been burned by agencies who charged you for <b style="color:#fff">junk leads</b></p>
       </div>
-      <div class="hv48" style="border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:32px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:16px;transform:rotate(-.25deg);transition:transform .35s,border-color .35s">
+      <div style="border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:32px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:16px;transform:rotate(-.25deg);transition:transform .35s,border-color .35s" style-hover="transform:rotate(0deg) translateY(-6px);border-color:rgba(0,255,196,.35)">
         <span style="font-family:'Anton',sans-serif;font-size:34px;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.25)">05</span>
         <p style="margin:0;font-size:17px;line-height:1.6;color:#d5cfd9">You want to pay for <b style="color:#fff">results, not promises</b></p>
       </div>
-      <div class="hv49" style="border:1px solid rgba(0,255,196,.3);border-radius:18px;padding:32px;background:radial-gradient(80% 100% at 50% 0%, rgba(0,179,137,.16) 0%, rgba(0,179,137,.04) 100%);display:flex;flex-direction:column;gap:16px;transform:rotate(.2deg);transition:transform .35s,box-shadow .35s">
+      <div style="border:1px solid rgba(0,255,196,.3);border-radius:18px;padding:32px;background:radial-gradient(80% 100% at 50% 0%, rgba(0,179,137,.16) 0%, rgba(0,179,137,.04) 100%);display:flex;flex-direction:column;gap:16px;transform:rotate(.2deg);transition:transform .35s,box-shadow .35s" style-hover="transform:rotate(0deg) translateY(-6px);box-shadow:0 0 40px rgba(0,255,196,.18)">
         <span style="font-family:'Anton',sans-serif;font-size:34px;color:#00ffc4;animation:glowPulse 3.5s ease-in-out infinite">06</span>
         <p style="margin:0;font-size:17px;line-height:1.6;color:#d5cfd9">You're ready to stop worrying about where the <b style="color:#fff">next client comes from</b></p>
       </div>
@@ -948,70 +807,18 @@ cal-modal-box{z-index:200}
       <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,4.5vw,58px);line-height:1.05;color:#fff;text-transform:uppercase">Got questions? <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;text-transform:none;color:#00ffc4">We got answers.</span></h2>
     </div>
     <div style="display:flex;flex-direction:column;gap:12px">
-      
-        <div class="hv50" style="border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.03);transition:border-color .3s">
-          <button type="button" class="faq-q" data-faq="0" id="faq-btn-0" aria-expanded="true" aria-controls="faq-panel-0" style="width:100%;display:flex;align-items:center;gap:18px;background:none;border:0;padding:22px 26px;cursor:pointer;text-align:left;font-family:'Space Grotesk',sans-serif">
-            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#7d7484;flex-shrink:0">Q01</span>
-            <span style="font-size:17px;font-weight:700;color:#fff;flex:1">How are you different from other agencies?</span>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:18px;color:#00ffc4">&minus;</span>
+      <sc-for list="{{ faqs }}" as="faq" hint-placeholder-count="7">
+        <div style="border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.03);transition:border-color .3s" style-hover="border-color:rgba(0,255,196,.3)">
+          <button onClick="{{ faq.toggle }}" style="width:100%;display:flex;align-items:center;gap:18px;background:none;border:0;padding:22px 26px;cursor:pointer;text-align:left;font-family:'Space Grotesk',sans-serif">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#7d7484;flex-shrink:0">{{ faq.idx }}</span>
+            <span style="font-size:17px;font-weight:700;color:#fff;flex:1">{{ faq.q }}</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:18px;color:#00ffc4">{{ faq.icon }}</span>
           </button>
-          <div class="faq-panel" id="faq-panel-0" role="region" aria-labelledby="faq-btn-0"><p style="margin:0 26px 24px 62px;padding:16px 20px;font-size:15.5px;line-height:1.65;color:#c2bbc8;border-left:2px solid #00ffc4;background:rgba(0,255,196,.04);border-radius:0 12px 12px 0;animation:rise .35s ease both">Most agencies blast templates and charge retainers whether it works or not. We find people in pain, write 1:1 messages using data we scrape ourselves, and only get paid when qualified meetings show up.</p></div>
+          <sc-if value="{{ faq.open }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0 26px 24px 62px;padding:16px 20px;font-size:15.5px;line-height:1.65;color:#c2bbc8;border-left:2px solid #00ffc4;background:rgba(0,255,196,.04);border-radius:0 12px 12px 0;animation:rise .35s ease both">{{ faq.a }}</p>
+          </sc-if>
         </div>
-      
-        <div class="hv51" style="border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.03);transition:border-color .3s">
-          <button type="button" class="faq-q" data-faq="1" id="faq-btn-1" aria-expanded="false" aria-controls="faq-panel-1" style="width:100%;display:flex;align-items:center;gap:18px;background:none;border:0;padding:22px 26px;cursor:pointer;text-align:left;font-family:'Space Grotesk',sans-serif">
-            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#7d7484;flex-shrink:0">Q02</span>
-            <span style="font-size:17px;font-weight:700;color:#fff;flex:1">What counts as a qualified meeting?</span>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:18px;color:#00ffc4">+</span>
-          </button>
-          <div class="faq-panel" id="faq-panel-1" role="region" aria-labelledby="faq-btn-1" hidden><p style="margin:0 26px 24px 62px;padding:16px 20px;font-size:15.5px;line-height:1.65;color:#c2bbc8;border-left:2px solid #00ffc4;background:rgba(0,255,196,.04);border-radius:0 12px 12px 0;animation:rise .35s ease both">We decide together before we start. Industry, size, title, revenue, tech stack — whatever matters to you. If they don't fit, you don't pay.</p></div>
-        </div>
-      
-        <div class="hv52" style="border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.03);transition:border-color .3s">
-          <button type="button" class="faq-q" data-faq="2" id="faq-btn-2" aria-expanded="false" aria-controls="faq-panel-2" style="width:100%;display:flex;align-items:center;gap:18px;background:none;border:0;padding:22px 26px;cursor:pointer;text-align:left;font-family:'Space Grotesk',sans-serif">
-            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#7d7484;flex-shrink:0">Q03</span>
-            <span style="font-size:17px;font-weight:700;color:#fff;flex:1">How do you find data others can't?</span>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:18px;color:#00ffc4">+</span>
-          </button>
-          <div class="faq-panel" id="faq-panel-2" role="region" aria-labelledby="faq-btn-2" hidden><p style="margin:0 26px 24px 62px;padding:16px 20px;font-size:15.5px;line-height:1.65;color:#c2bbc8;border-left:2px solid #00ffc4;background:rgba(0,255,196,.04);border-radius:0 12px 12px 0;animation:rise .35s ease both">We build custom AI agents that scrape signals no database has. If it exists online, we can get it.</p></div>
-        </div>
-      
-        <div class="hv53" style="border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.03);transition:border-color .3s">
-          <button type="button" class="faq-q" data-faq="3" id="faq-btn-3" aria-expanded="false" aria-controls="faq-panel-3" style="width:100%;display:flex;align-items:center;gap:18px;background:none;border:0;padding:22px 26px;cursor:pointer;text-align:left;font-family:'Space Grotesk',sans-serif">
-            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#7d7484;flex-shrink:0">Q04</span>
-            <span style="font-size:17px;font-weight:700;color:#fff;flex:1">How fast will I see results?</span>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:18px;color:#00ffc4">+</span>
-          </button>
-          <div class="faq-panel" id="faq-panel-3" role="region" aria-labelledby="faq-btn-3" hidden><p style="margin:0 26px 24px 62px;padding:16px 20px;font-size:15.5px;line-height:1.65;color:#c2bbc8;border-left:2px solid #00ffc4;background:rgba(0,255,196,.04);border-radius:0 12px 12px 0;animation:rise .35s ease both">Most clients see meetings within weeks. One closed $240K in 30 days. Depends on your market.</p></div>
-        </div>
-      
-        <div class="hv54" style="border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.03);transition:border-color .3s">
-          <button type="button" class="faq-q" data-faq="4" id="faq-btn-4" aria-expanded="false" aria-controls="faq-panel-4" style="width:100%;display:flex;align-items:center;gap:18px;background:none;border:0;padding:22px 26px;cursor:pointer;text-align:left;font-family:'Space Grotesk',sans-serif">
-            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#7d7484;flex-shrink:0">Q05</span>
-            <span style="font-size:17px;font-weight:700;color:#fff;flex:1">What if it doesn't work?</span>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:18px;color:#00ffc4">+</span>
-          </button>
-          <div class="faq-panel" id="faq-panel-4" role="region" aria-labelledby="faq-btn-4" hidden><p style="margin:0 26px 24px 62px;padding:16px 20px;font-size:15.5px;line-height:1.65;color:#c2bbc8;border-left:2px solid #00ffc4;background:rgba(0,255,196,.04);border-radius:0 12px 12px 0;animation:rise .35s ease both">You don't pay.</p></div>
-        </div>
-      
-        <div class="hv55" style="border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.03);transition:border-color .3s">
-          <button type="button" class="faq-q" data-faq="5" id="faq-btn-5" aria-expanded="false" aria-controls="faq-panel-5" style="width:100%;display:flex;align-items:center;gap:18px;background:none;border:0;padding:22px 26px;cursor:pointer;text-align:left;font-family:'Space Grotesk',sans-serif">
-            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#7d7484;flex-shrink:0">Q06</span>
-            <span style="font-size:17px;font-weight:700;color:#fff;flex:1">Long-term contract?</span>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:18px;color:#00ffc4">+</span>
-          </button>
-          <div class="faq-panel" id="faq-panel-5" role="region" aria-labelledby="faq-btn-5" hidden><p style="margin:0 26px 24px 62px;padding:16px 20px;font-size:15.5px;line-height:1.65;color:#c2bbc8;border-left:2px solid #00ffc4;background:rgba(0,255,196,.04);border-radius:0 12px 12px 0;animation:rise .35s ease both">No. Minimum commitment to give it time, but no lock-ins.</p></div>
-        </div>
-      
-        <div class="hv56" style="border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.03);transition:border-color .3s">
-          <button type="button" class="faq-q" data-faq="6" id="faq-btn-6" aria-expanded="false" aria-controls="faq-panel-6" style="width:100%;display:flex;align-items:center;gap:18px;background:none;border:0;padding:22px 26px;cursor:pointer;text-align:left;font-family:'Space Grotesk',sans-serif">
-            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#7d7484;flex-shrink:0">Q07</span>
-            <span style="font-size:17px;font-weight:700;color:#fff;flex:1">Why performance-based?</span>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:18px;color:#00ffc4">+</span>
-          </button>
-          <div class="faq-panel" id="faq-panel-6" role="region" aria-labelledby="faq-btn-6" hidden><p style="margin:0 26px 24px 62px;padding:16px 20px;font-size:15.5px;line-height:1.65;color:#c2bbc8;border-left:2px solid #00ffc4;background:rgba(0,255,196,.04);border-radius:0 12px 12px 0;animation:rise .35s ease both">It keeps us honest. If we don't deliver, we don't eat.</p></div>
-        </div>
-      
+      </sc-for>
     </div>
   </div>
 </section>
@@ -1023,9 +830,9 @@ cal-modal-box{z-index:200}
   <div style="max-width:900px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:26px;position:relative">
     <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(44px,6.5vw,88px);line-height:1.02;color:#fff;text-transform:uppercase;text-wrap:balance">The 97% is <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;text-transform:none;color:#00ffc4;animation:glowPulse 3.5s ease-in-out infinite">waiting.</span></h2>
     <p style="margin:0;font-size:18px;color:#a49daa;line-height:1.6;max-width:560px">While everyone's fighting over the 3% actively buying, we'll introduce you to the rest. <b style="color:#fff">You only pay when it works.</b></p>
-    <a class="cta-primary hv57" href="https://cal.com/hugo-van-baal-agjtxz/30min?overlayCalendar=true" data-book="1" data-cal-namespace="30min" data-cal-link="hugo-van-baal-agjtxz/30min" data-cal-config='{"layout":"month_view","theme":"dark"}' style="display:inline-flex;align-items:center;gap:12px;background:#00ffc4;color:#000;font-weight:700;font-size:18px;padding:17px 34px;border-radius:999px;box-shadow:0 0 50px rgba(0,255,196,.35);position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s"><span style="position:absolute;top:0;bottom:0;left:0;width:45%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.6),transparent);animation:shimmer 2.6s ease-in-out infinite"></span><span style="position:relative">Apply For A Performance Campaign</span> <span style="position:relative;background:#000;color:#00ffc4;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:16px">→</span></a>
+    <a href="#apply" style="display:inline-flex;align-items:center;gap:12px;background:#00ffc4;color:#000;font-weight:700;font-size:18px;padding:17px 34px;border-radius:999px;box-shadow:0 0 50px rgba(0,255,196,.35);position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s" style-hover="background:#7dffe2;transform:translateY(-3px);box-shadow:0 0 90px rgba(0,255,196,.55);color:#000"><span style="position:absolute;top:0;bottom:0;left:0;width:45%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.6),transparent);animation:shimmer 2.6s ease-in-out infinite"></span><span style="position:relative">Apply For A Performance Campaign</span> <span style="position:relative;background:#000;color:#00ffc4;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:16px">→</span></a>
     <p style="margin:0;font-size:14px;color:#c2bbc8;line-height:1.6"><span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#00ffc4;border:1px solid rgba(0,255,196,.35);border-radius:5px;padding:2px 8px;margin-right:10px">No risk</span>You define what qualified means. We run the campaigns. You only pay for meetings that show up.</p>
-    <span style="display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#c2bbc8"><span style="width:8px;height:8px;border-radius:50%;background:#ff5c5c;animation:blink 1.4s infinite"></span> We only onboard 2 new agencies per month</span>
+    <span style="display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#c2bbc8"><span style="width:8px;height:8px;border-radius:50%;background:#ff5c5c;animation:blink 1.4s infinite"></span> We only onboard {{ spotsLeft }} new agencies per month</span>
   </div>
 </section>
 
@@ -1039,8 +846,8 @@ cal-modal-box{z-index:200}
       </div>
       <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#7d7484">© 2026 Humain Demand · Outbound engineering</span>
       <div style="display:flex;gap:20px;font-size:13px">
-        <a class="hv58" href="#" style="color:#a49daa">Twitter</a>
-        <a class="hv59" href="#" style="color:#a49daa">LinkedIn</a>
+        <a href="#" style="color:#a49daa" style-hover="color:#fff">Twitter</a>
+        <a href="#" style="color:#a49daa" style-hover="color:#fff">LinkedIn</a>
       </div>
     </div>
     <div style="font-family:'Anton',sans-serif;font-size:clamp(60px,9.5vw,140px);line-height:.95;text-transform:uppercase;text-align:center;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.06);white-space:nowrap;user-select:none;margin-bottom:-30px">Humain Demand</div>
@@ -1048,13 +855,13 @@ cal-modal-box{z-index:200}
 </footer>
 
 <!-- FLOATING TESTIMONIAL -->
-
-  <div id="floating-card" style="position:fixed;bottom:24px;left:24px;z-index:80;max-width:360px;background:rgba(22,17,26,.95);backdrop-filter:blur(12px);border:1px solid rgba(0,255,196,.25);border-radius:18px;padding:22px 24px;box-shadow:0 12px 40px rgba(0,0,0,.5);display:flex;flex-direction:column;gap:12px;animation:rise .6s cubic-bezier(.22,.7,.25,1) 1s both">
-    <button class="hv60" type="button" id="floating-dismiss" aria-label="Dismiss testimonial" style="position:absolute;top:10px;right:12px;background:none;border:0;color:#7d7484;font-size:15px;cursor:pointer;font-family:'Space Grotesk',sans-serif">✕</button>
+<sc-if value="{{ floatingVisible }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;bottom:24px;left:24px;z-index:80;max-width:360px;background:rgba(22,17,26,.95);backdrop-filter:blur(12px);border:1px solid rgba(0,255,196,.25);border-radius:18px;padding:22px 24px;box-shadow:0 12px 40px rgba(0,0,0,.5);display:flex;flex-direction:column;gap:12px;animation:rise .6s cubic-bezier(.22,.7,.25,1) 1s both">
+    <button onClick="{{ dismissFloating }}" style="position:absolute;top:10px;right:12px;background:none;border:0;color:#7d7484;font-size:15px;cursor:pointer;font-family:'Space Grotesk',sans-serif" style-hover="color:#fff">✕</button>
     <span style="font-size:12px;letter-spacing:2px;color:#ffd700">★★★★★</span>
     <p style="margin:0;font-size:14px;line-height:1.55;color:#d5cfd9;font-family:'Instrument Serif',serif;font-style:italic">"We have had 15 qualified conversations and acquired 3 new customers within a period of 1 month."</p>
     <div style="display:flex;align-items:center;gap:10px">
-      <img src="Testimonials/Theo Gors.jpeg" alt="Theo Görs" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;width:32px;height:32px">
+      <image-slot id="float-avatar-theo" shape="circle" style="width:32px;height:32px" placeholder="Photo"></image-slot>
       <div style="display:flex;flex-direction:column;gap:1px">
         <span style="font-size:12.5px;font-weight:700;color:#fff">Theo Görs</span>
         <span style="font-size:11px;color:#8b8292">CEO @ OnicBlue BV</span>
@@ -1062,71 +869,51 @@ cal-modal-box{z-index:200}
       <span style="margin-left:auto;color:#00ffc4;font-weight:700">✓</span>
     </div>
   </div>
-<script>
-(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-Cal("init", "30min", {origin:"https://cal.com"});
-Cal.ns["30min"]("ui", {"theme":"dark","hideEventTypeDetails":false,"layout":"month_view"});
-</script>
-<script>
-(function(){
-  // Cal's embed.js opens its modal from its own click listener but never
-  // prevents the anchor's default navigation (its docs assume <button>s with
-  // no href), so without this the browser follows the link to cal.com and the
-  // visitor leaves the page. Cancel navigation only once the embed has really
-  // executed — Cal.instance exists only after embed.js runs — so the href
-  // stays a working fallback whenever the embed script is blocked or slow.
-  document.addEventListener('click',function(e){
-    var a=e.target.closest('[data-cal-link]');
-    if(a && window.Cal && window.Cal.instance) e.preventDefault();
-  });
-
-  // FAQ accordion — one open at a time, matching the canvas behaviour
-  document.addEventListener('click',function(e){
-    var btn=e.target.closest('.faq-q');
-    if(!btn) return;
-    var isOpen=btn.getAttribute('aria-expanded')==='true';
-    document.querySelectorAll('.faq-q').forEach(function(other){
-      other.setAttribute('aria-expanded','false');
-      other.querySelector('span:last-child').innerHTML='+';
-      document.getElementById(other.getAttribute('aria-controls')).hidden=true;
-    });
-    if(!isOpen){
-      btn.setAttribute('aria-expanded','true');
-      btn.querySelector('span:last-child').innerHTML='\u2212';
-      document.getElementById(btn.getAttribute('aria-controls')).hidden=false;
-    }
-  });
-
-  // Mobile nav: below 900px the canvas's text links are hidden (it is a
-  // desktop-only design), so rebuild them as a hamburger dropdown cloned from
-  // the same anchors. Runtime injection keeps the canvas markup untouched.
-  var actions=document.querySelector('.nav-actions');
-  var links=document.querySelectorAll('nav .nav-link');
-  if(actions&&links.length){
-    var burger=document.createElement('button');
-    burger.id='nav-burger';burger.type='button';burger.innerHTML='&#9776;';
-    burger.setAttribute('aria-label','Open navigation menu');
-    burger.setAttribute('aria-expanded','false');
-    burger.setAttribute('aria-controls','mobile-nav');
-    actions.appendChild(burger);
-    var panel=document.createElement('div');
-    panel.id='mobile-nav';panel.hidden=true;
-    links.forEach(function(a){panel.appendChild(a.cloneNode(true));});
-    document.querySelector('nav').appendChild(panel);
-    function setMenu(open){
-      panel.hidden=!open;
-      burger.setAttribute('aria-expanded',String(open));
-    }
-    burger.addEventListener('click',function(){setMenu(panel.hidden);});
-    panel.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false);});
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;spotsLeft&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 2, &quot;tsType&quot;: &quot;number&quot;, &quot;min&quot;: 1, &quot;max&quot;: 10, &quot;section&quot;: &quot;Offer&quot;},
+  &quot;showMarquee&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Sections&quot;},
+  &quot;showFloatingCard&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Sections&quot;}
+}">
+class Component extends DCLogic {
+  state = { openFaq: 0, floatingDismissed: false };
+  renderVals() {
+    const rows = [
+      { label: "Payment model", us: "Pay per qualified meeting", agency: "Monthly retainer, hope it works", diy: "Your time + tool costs" },
+      { label: "Targeting", us: "Demand Activation Zones", agency: "Job titles and company size", diy: "Whatever you can figure out" },
+      { label: "Data", us: "Custom AI agents for signals no one else has", agency: "Same lists everyone uses", diy: "Apollo/ZoomInfo and pray" },
+      { label: "Research", us: "Reddit, sales calls, customer interviews", agency: "Skim your website", diy: "Skip it" },
+      { label: "Personalization", us: "1:1 unique copy per prospect", agency: "Templates with {first_name}", diy: "Templates with {first_name}" },
+      { label: "Risk", us: "Ours", agency: "Yours", diy: "Yours" },
+      { label: "Workload", us: "Us (done for you)", agency: "Them (maybe)", diy: "You" }
+    ];
+    const faqData = [
+      { q: "How are you different from other agencies?", a: "Most agencies blast templates and charge retainers whether it works or not. We find people in pain, write 1:1 messages using data we scrape ourselves, and only get paid when qualified meetings show up." },
+      { q: "What counts as a qualified meeting?", a: "We decide together before we start. Industry, size, title, revenue, tech stack — whatever matters to you. If they don't fit, you don't pay." },
+      { q: "How do you find data others can't?", a: "We build custom AI agents that scrape signals no database has. If it exists online, we can get it." },
+      { q: "How fast will I see results?", a: "Most clients see meetings within weeks. One closed $240K in 30 days. Depends on your market." },
+      { q: "What if it doesn't work?", a: "You don't pay." },
+      { q: "Long-term contract?", a: "No. Minimum commitment to give it time, but no lock-ins." },
+      { q: "Why performance-based?", a: "It keeps us honest. If we don't deliver, we don't eat." }
+    ];
+    const open = this.state.openFaq;
+    return {
+      spotsLeft: this.props.spotsLeft ?? 2,
+      showMarquee: this.props.showMarquee ?? true,
+      floatingVisible: (this.props.showFloatingCard ?? true) && !this.state.floatingDismissed,
+      dismissFloating: () => this.setState({ floatingDismissed: true }),
+      compareRows: rows,
+      faqs: faqData.map((f, i) => ({
+        ...f,
+        idx: "Q" + String(i + 1).padStart(2, "0"),
+        open: i === open,
+        icon: i === open ? "−" : "+",
+        toggle: () => this.setState({ openFaq: this.state.openFaq === i ? -1 : i })
+      }))
+    };
   }
-
-  var dismiss=document.getElementById('floating-dismiss');
-  if(dismiss) dismiss.addEventListener('click',function(){
-    var card=document.getElementById('floating-card');
-    if(card) card.remove();
-  });
-})();
+}
 </script>
 </body>
 </html>
