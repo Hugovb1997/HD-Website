@@ -490,6 +490,23 @@ body = drop_style(
 body = drop_style(body, '<div style="height:calc(100% - 20px)">', "<div>", expect=6)
 
 # ---------------------------------------------------------------------------
+# 8c. footer legal links
+#
+# The canvas footer only has placeholder Twitter/LinkedIn anchors (href="#").
+# Swap them for the generated legal pages, which every site needs and which
+# the canvas has no screens for. Social links go back in once Hugo supplies
+# the real profile URLs.
+# ---------------------------------------------------------------------------
+
+FOOTER_OLD = ('<a class="hv58" href="#" style="color:#a49daa">Twitter</a>\n'
+              '        <a class="hv59" href="#" style="color:#a49daa">LinkedIn</a>')
+FOOTER_NEW = ('<a class="hv58" href="/privacy" style="color:#a49daa">Privacy Policy</a>\n'
+              '        <a class="hv59" href="/terms" style="color:#a49daa">Terms &amp; Conditions</a>')
+if FOOTER_OLD not in body:
+    fail("footer social links not found (canvas footer changed?)")
+body = body.replace(FOOTER_OLD, FOOTER_NEW, 1)
+
+# ---------------------------------------------------------------------------
 # 9. tag layout containers so the responsive stylesheet can reach them
 # ---------------------------------------------------------------------------
 
@@ -782,5 +799,10 @@ with open(OUT, "w", encoding="utf-8") as fh:
     fh.write(page)
 
 print("wrote %s" % os.path.normpath(OUT))
+
+# standalone legal pages (not part of the canvas — see design-import/legal.py)
+import legal
+for _name, _n in legal.build():
+    print("  wrote %s (%d sections)" % (_name, _n))
 print("  %d hover rules, %d images, %d FAQ items, %d compare rows, %d booking CTAs"
       % (len(hover_rules), len(SLOTS), len(FAQS), len(COMPARE_ROWS), booked))
