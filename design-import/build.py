@@ -358,6 +358,37 @@ if "style-hover" in body:
     fail("style-hover attribute survived the rewrite")
 
 # ---------------------------------------------------------------------------
+# 6b. National Positions case study — screenshot removed
+#
+# Hugo asked (2026-09-27) to take the Slack screenshot out of the NP case
+# study. The proof frame is dropped and the card collapses to one text column.
+# Runs after the hover pass so the hvN numbering the footer swap keys on stays
+# put; the frame's orphaned hover rule goes with it. TO BRING IT BACK: set
+# SHOW_NP_PROOF = True.
+# ---------------------------------------------------------------------------
+
+SHOW_NP_PROOF = False
+
+if not SHOW_NP_PROOF:
+    np_media = re.compile(r'\s*<div class="(hv\d+)" style="[^"]*">\s*'
+                          r'<span [^>]*>Proof</span>\s*'
+                          r'<image-slot id="cs-np"[^>]*></image-slot>\s*</div>')
+    found = np_media.findall(body)
+    if len(found) != 1:
+        fail("expected 1 NP proof frame, found %d" % len(found))
+    body = np_media.sub("", body)
+    hover_rules[:] = [r for r in hover_rules if r[0] != found[0]]
+
+    # 640px keeps the paragraph at a readable measure in the now full-width card
+    body, n = re.subn(
+        r'grid-template-columns:minmax\(0,1fr\) minmax\(0,1fr\)(;gap:48px;align-items:center">\s*'
+        r'<div style="display:flex;flex-direction:column;justify-content:center;gap:16px;position:relative)'
+        r'(">\s*<span [^>]*>Case study — National Positions</span>)',
+        r"grid-template-columns:minmax(0,1fr)\1;max-width:640px\2", body)
+    if n != 1:
+        fail("expected 1 NP case study card, found %d" % n)
+
+# ---------------------------------------------------------------------------
 # 7. <image-slot> -> <img>
 # ---------------------------------------------------------------------------
 
@@ -522,7 +553,7 @@ body = add_class(body, "width:480px;height:480px", "orbit", expect=1)
 body = add_class(body, "gap:26px;font-size:14px", "nav-actions", expect=1)
 body = add_class(body, "letter-spacing:.14em;text-transform:uppercase;color:#7d7484;border:1px solid", "nav-badge", expect=1)
 # leading ';' required — bare "order:1" also matches inside "border:1px"
-body = add_class(body, "min-height:320px", "cs-media", expect=3)
+body = add_class(body, "min-height:320px", "cs-media", expect=3 if SHOW_NP_PROOF else 2)
 body = add_class(body, "grid-column:span 2", "reply-featured", expect=2)
 body = add_class(body, "font-weight:700;font-size:16px;letter-spacing:-.01em", "nav-name", expect=1)
 body = add_class(body, "width:30px;height:30px;border-radius:50%;overflow:hidden;border:2px solid rgba(0,0,0,.4)", "nav-cta-avatar", expect=1)
